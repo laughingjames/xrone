@@ -1,0 +1,341 @@
+@charset "UTF-8";
+#parallax-address.parallax {
+				   background-image: url('../images/editing_room.jpg') !important;
+				}	 
+								
+			              				
+				#parallax-testimonials.parallax {
+				   background-image: url('../images/Testimonials.jpg') !important;
+				}	 
+								
+			              				
+				#parallax-twitter.parallax {
+				   background-image: url('../images/director.jpg') !important;
+				}	 
+				          				
+				#parallax-quote.parallax {
+				   background-image: url('../images/2274693.jpg') !important;
+				}	 
+				.home-parallax { 
+				   background: url('../images/shouye.jpg') center top;
+				}
+				#meitiziyuan.parallax {
+				   background-image: url('../images/meitiziyuan.jpg') !important;
+				}
+body{ 
+        		font-size: 13px; 
+		
+				font-style: normal; 		  
+			   
+	   color: #000000;
+	   font-weight:  normal;
+}
+	h1{
+        		font-size: 80px; 
+
+				font-style: normal; 		  
+		
+		color: #000000; 
+	    font-weight:  normal; 
+	    text-transform:  none;	
+	}
+	
+	.contact-details h1 {
+		font-size: 80px !important; 		
+	}
+
+	h2{ 
+        		font-size: 36px; 
+				font-style: normal; 		  
+				color: #000000;  
+	    font-weight:  normal; 
+	    text-transform:  none;	
+	}
+
+	h3{ 
+        		font-size: 20px; 
+				
+				font-style: normal; 		  
+				color: #000000; 
+	    font-weight:  normal; 
+	    text-transform:  none;	
+	}
+	h4{ 
+        		font-size: 18px; 
+				font-style: normal;  
+	    font-weight:  normal; 
+	    text-transform:  none;			  
+				color: #000000; 
+	}
+	h5{ 
+        		font-size: 16px; 
+				font-style: normal; 		  
+				color: #000000;  
+	    font-weight:  normal; 
+	    text-transform:  none;	
+	}
+	h6{ 
+        		font-size: 14px; 
+				font-style: normal; 	 
+	    font-weight:  normal; 
+	    text-transform:  none;	  
+				color: #000000; 
+	}
+	.subtitle { 
+        		font-size: 25px; 
+
+				font-style: normal; 	 
+	    font-weight:  lighter; 
+	    text-transform:  uppercase;	  
+				color: #000000; 
+	}
+	.home-parallax h1,
+	.home-parallax h2,
+	.home-parallax h3,
+	.home-parallax h4,
+	.home-parallax h5,
+	.home-parallax h6,
+	.home-fullscreenslider h1,
+	.home-fullscreenslider h2,
+	.home-fullscreenslider h3,
+	.home-fullscreenslider h4,
+	.home-fullscreenslider h5,
+	.home-fullscreenslider h6,
+	.home-video h1,
+	.home-video h2,
+	.home-video h3,
+	.home-video h4,
+	.home-video h5,
+	.home-video h6,	
+	.parallax h1,
+	.parallax h2,
+	.parallax h3,
+	.parallax h4,
+	.parallax h5,
+	.parallax h6,
+	.parallax p.quote,
+	.home-slide .home-slide-content,
+	#slidecaption,
+	.parallax .twitter-author a,
+	.contact-details h2,
+	.home3 h1 { 
+
+        		font-size: 45px; 
+				font-style: normal; 	 
+	    font-weight:  normal; 
+	    text-transform:  none;	  
+				color: #ffffff; 
+	}
+			.home3 h1{
+			width:420px;
+			margin:0 40px;
+		 } 
+		@media only screen and (max-width: 767px) {
+	    .home3 h1 {
+	        width: 380px;
+	        margin:0 30px;
+	     }
+		}
+		@media only screen and (max-width: 479px) {
+	    .home3 h1 {
+	        width: 220px;
+	        margin:0 30px;
+	     }
+		}		
+		.home-logo-text a {
+        	
+	}
+	.home-parallax,
+	.home-video, 
+	.parallax,
+	.parallax #twitter-feed ul.slides > li,
+	.parallax .testimonial-slide .client-testimonial,
+	.slidedescription { 
+        		font-size: 16px; 
+				font-style: normal; 
+				color: #ffffff; 
+	}
+.navigation.colored li a,
+nav.light .main-menu a,
+nav.dark .main-menu a,
+nav.transparent.scroll a,
+.page-template-default nav.transparent .main-menu a, 
+.blog nav.transparent .main-menu a, 
+nav.transparent.scroll .main-menu a  {
+         
+		font-size: 22px; 
+				font-style: normal; 		  
+			   
+	   color: #ffffff;	
+	   font-weight:  normal; 
+	   text-transform:  none;   	   	
+}
+nav.transparent a {
+         
+		font-size: 22px; 
+				font-style: normal; 		  
+			   
+	   font-weight:  normal; 
+	   text-transform:  none;   
+	   color :  #ffffff;   	
+}
+.navigation li a:hover, 
+.navigation li.active a ,
+.navigation.colored li a:hover, 
+.navigation.colored li.active a, 
+.navigation li.current-menu-item a,
+.navigation li.current_page_parent > a{
+	   color: #90cce5 !important;	   
+}
+.navigation.transparent li.current-menu-item a,
+.navigation.transparent li.active a {
+	   color: #428bca !important;	   
+}
+.copyright {
+	background: #428bca !important;
+        	font-size: 15px; 
+	
+		font-style: normal; 		  
+		  
+   
+   color: #ffffff;		
+}
+.copyright a, .copyright .social-icons .social-icon {
+	   color: #ffffff;	   
+}
+.copyright a:hover {
+	   color: #000000;	   
+}
+
+
+
+.home-text-wrapper, .parallax-overlay {
+	  
+}
+
+
+/*========== B A C K G R O U N D    S K I N S =============*/
+::-moz-selection {
+ background: #428bca;
+}
+::selection {
+	background:#428bca;
+}
+nav.colored, nav.light.colored,
+.twitter-feed-icon i,
+.testimonial-icon i,
+.home-gradient,
+.home-parallax,
+#project-navigation ul li#prevProject a:hover, 
+#project-navigation ul li#nextProject a:hover,
+#project-navigation ul li a:hover,
+#closeProject a:hover,
+.mc4wp-form input[type="submit"],
+#respond input[type="submit"],
+input[type="submit"],
+.pagination a.previous:hover, 
+.pagination a.next:hover,
+.service-box:hover,
+.button,
+.skillbar .skill-percentage,
+.flex-control-nav li a:hover,
+.flex-control-nav li a.flex-active,
+.testimonial-slider .flex-direction-nav li a i, 
+.twitter-slider .flex-direction-nav li a i,
+.project-media .flex-direction-nav li a i,
+.color-block,
+.home1 .slabtextdone .slabtext.second-child,
+.home4 .slabtextdone .slabtext.second-child,
+.caption,
+.copyright,
+.title h1,
+.service-features .img-container,
+.service-features .img-container,
+.view-profile,
+.team-member:hover .team-desc,
+.service-box .service-icon,
+.modal .close,
+#nav .sub-menu li.current-menu-item a, 
+#nav .sub-menu li.current-menu-item a:hover, 
+#nav .sub-menu li.current_page_item a, 
+#nav .sub-menu li.current_page_item a:hover, 
+#nav .sub-menu li .sub-menu li.current-menu-item a, 
+#nav .sub-menu li .sub-menu li.current-menu-item a:hover, 
+#nav .sub-menu li .sub-menu li.current_page_item a, 
+#nav .sub-menu li .sub-menu li.current_page_item a:hover, 
+#nav .sub-menu li a.active, #nav .sub-menu li a.active:hover,
+#port-pagination a:hover,
+#respond input[type="submit"], 
+.woocommerce #respond input#submit, 
+.woocommerce ul.products li.product a.button, 
+.woocommerce-page ul.products li.product a.button,
+.woocommerce div.product form.cart .button,
+.woocommerce-page .woocommerce-message .button,
+.woocommerce .cart-collaterals .shipping_calculator .button, 
+.woocommerce-page .cart-collaterals .shipping_calculator .button,
+.woocommerce .login input.button,
+ .woocommerce .checkout_coupon input.button,
+ .woocommerce .cart input.button.alt,
+.woocommerce .login input.button,
+ .woocommerce .checkout_coupon input.button,
+ .woocommerce #respond input#submit:hover,
+.woocommerce-page .woocommerce-message .button:hover,
+.woocommerce button.button.alt,
+.woocommerce a.wc-backward,
+.woocommerce a.wc-backward:hover,
+.woocommerce #payment #place_order, 
+.woocommerce-page #payment #place_order,
+.woocommerce #payment #place_order:hover, 
+.woocommerce-page #payment #place_order:hover,
+.woocommerce .widget_price_filter .ui-slider .ui-slider-range, 
+.woocommerce-page .widget_price_filter .ui-slider .ui-slider-range,
+.latest-blog .blog-item .inner:hover .blog-item-description .desc.post-icon,
+.blog .blog-overlay,
+.latest-blog .blog-item .blog-item-description span.date,
+div.wpcf7 div.stretch-submit input[type="submit"],
+.plan.featured .plan-head {
+	background-color: #428bca;
+}
+/*========== B O X   S H A D O W    S K I N S =============*/
+.title h1,
+.service-box .service-icon {
+	box-shadow:0px 0px 0px 3px #428bca;
+}
+.tab a.selected {
+    box-shadow: 0px -3px 0px 0px #428bca;
+}
+/*========== C O L O R    S K I N S =============*/
+a,
+.highlight,
+nav.light .main-menu a:hover, 
+nav.dark .main-menu a:hover,
+nav.light .main-menu li.active a,
+nav.transparent .main-menu li.active a, 
+nav.dark .main-menu li.active a,
+.parallax .quote i,
+#filters ul li a:hover h3, 
+#filters ul li a.active h3,
+.post-title a:hover,
+.post-tags li a:hover,
+.tags-list li a:hover,
+.pages li a:hover,
+.home3 .slabtextdone .slabtext.second-child,
+.service-box:hover .service-icon,
+span.amount,
+#nav .sub-menu li a:hover, 
+#nav .sub-menu li .sub-menu li a:hover, 
+#nav .sub-menu li .sub-menu li .sub-menu li a:hover {
+	color:#428bca;
+	
+}
+/*========== B O R D E R    S K I N S =============*/
+.pages li a.current,
+.pages li a.current,
+.service-features .img-container:after,
+.service-box:hover .service-icon,
+.callout,
+blockquote p,
+.pullquote.align-right,
+.pullquote.align-left {
+	border-color: #428bca;
+}

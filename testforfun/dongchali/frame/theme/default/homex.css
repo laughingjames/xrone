@@ -1,0 +1,90 @@
+/** 主站首页 **/
+.in_banner{width:100%; overflow:hidden; position:relative;margin-top:0px;background:#ebebeb;}
+.in_banner .slide_pic{width:100%; height:650px; overflow:hidden; }
+.in_banner .slide_pic ul{white-space:nowrap;font-size:0px;}
+.in_banner .slide_pic li{width:100%; float:left; overflow:hidden;}
+.in_banner .slide_pic li a{width:300%; text-align:center; display:block; margin-left:-100%;}
+.in_banner .slide_btn{width:100%; position:absolute; bottom:15px; left:0; text-align:center;}
+.in_banner .slide_btn li{width:18px; height:18px; font-size:0; display:inline-block; *display:inline; *zoom:1; margin:0 6px; border:0px solid #fff; background:none; cursor:pointer; background-image:url("icons/icon-banner-sw-2.png");
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+}
+.in_banner .slide_btn li.active{ background-image:url("icons/icon-banner-sw-1.png");/*background-color:#c4181f; border:1px solid #c4181f;*/}
+.in_banner .slide_left{width:45px; height:100px; position:absolute; left:120px; top:50%; margin-top:-22px; background:url("icons/sideBtn.png") no-repeat;display:none;}
+.in_banner .slide_right{width:45px; height:100px; position:absolute; right:120px; top:50%; margin-top:-22px; background:url("icons/sideBtn.png") no-repeat -45px 0;display:none;}
+
+.in_newsBox{width:1160px; margin:43px auto 0; overflow:hidden;}
+.in_news_con{width:1160px; padding:0 0 30px; overflow:hidden;}
+.in_news{width:340px; overflow:hidden; float:left; }
+.in_news_space {margin-right:70px;}
+.in_newsTitle{padding:15px 0 10px 0; font-weight:normal; font-size:16px; color:#000; border-bottom:1px solid #d3d3d3;}
+.in_newsList{padding:8px 0;}
+.in_newsList p{line-height:24px;font-size:14px;}
+.in_newsList ul li{height:32px; line-height:32px;}
+.in_newsList ul li a{font-size:14px;}
+.in_newsList_more{float:right; margin-top:5px; color:#666;}
+.in_newsList_more:hover{color:#c4181f;}
+.in_newsList_more i{margin-left:6px; font-family:"宋体"; font-style:normal;}
+
+.in_section_w{width:100%; background-color:#ebebeb;}
+.in_section{width:1160px; margin:0 auto; padding:25px 0 46px 0;}
+.in_sectionLf{width:550px; float:left;}
+.in_sectionRg{width:570px; float:right;}
+.in_title{height:40px; line-height:40px;}
+.in_titleName{float:left; font-weight:normal; font-size:16px; color:#000;}
+.in_title_more{float:right; margin-top:5px; color:#666;font-size:12px;}
+.in_title_more:hover{color:#c4181f;}
+.in_title_more i{margin-left:6px; font-family:"宋体"; font-style:normal;}
+.in_title_more_1{margin-right:35px;}
+
+.in_evaluationTitle{margin-left:0px;}
+.in_evaluation_side{width:550px; margin-top:12px;  position:relative;overflow:hidden;}
+.in_evaluation_side .slide_pic{width:470px; margin:0 auto; overflow:hidden; }
+.in_evaluation_side .slide_pic ul{width:99999%;}
+.in_evaluation_side .slide_pic li{float:left; width:220px; padding-bottom:10px; padding-right:30px;overflow:hidden;}
+.in_evaluation_side .in_evaluationImg{border:1px solid #dcdcdc;}
+.in_evaluation_side .in_evaluationAbout{height:80px; margin-top:16px; line-height:24px; font-size:14px; overflow:hidden;}
+.in_evaluation_side .in_evaluationTitle{clear:both;padding:5px 0;margin-left:0px;font-size:14px;text-align:left;}
+.in_evaluation_side .slide_left{width:20px; height:37px; position:absolute; left:0px; top:40px; background:url("icons/sideBtn2.png") no-repeat; overflow:hidden;}
+.in_evaluation_side .slide_right{width:20px; height:37px; position:absolute; right:0px; top:40px; background:url("icons/sideBtn2.png") no-repeat -20px 0; overflow:hidden;}
+.in_evaluation_side .slide_left:hover{background:url("icons/sideBtn2.png") no-repeat 0 -37px;}
+.in_evaluation_side .slide_right:hover{background:url("icons/sideBtn2.png") no-repeat -20px -37px;}
+
+.in_case{padding-top:10px; border-top:1px solid #fff;}
+.in_caseTitle{margin-left:0px;}
+.in_caseSide{width:550px; margin:10px auto 0; height:110px; overflow:hidden; position:relative;}
+.in_caseSide .slide_pic{width:520px; overflow:hidden; }
+.in_caseSide .slide_pic ul{width:10000%;}
+.in_caseSide .slide_pic li{float:left; width:520px; overflow:hidden;}
+.in_caseSide .in_caseSide_img{width:160px; float:left;margin-left:36px;}
+.in_caseSide .in_caseSide_con{width:285px; float:right;margin-right:25px;}
+.in_caseSide .in_caseSide_name{font-weight:normal; font-size:15px;}
+.in_caseSide .in_caseSide_about{height:48px; margin-top:10px; line-height:26px; font-size:14px; color:#666; overflow:hidden;}
+.in_caseSide .slide_left{width:20px; height:20px; line-height:20px; font-family:"宋体"; text-align:center; position:absolute; right:85px; bottom:0; background:#fff;}
+.in_caseSide .slide_right{width:20px; height:20px; line-height:20px; font-family:"宋体"; text-align:center; position:absolute; right:60px; bottom:0; background:#fff;}
+.in_caseSide .slide_left:hover{background-color:#999; color:#fff;}
+.in_caseSide .slide_right:hover{background-color:#999; color:#fff;}
+
+.in_comments ul li{margin-top:10px;height:155px;}
+.in_comments_con_0{height:150px; background:#fff;overflow:hidden; }
+.in_commentsImg{width:170px; float:left; margin:10px 0 0 10px; display:inline;}
+.in_comments_con{width:340px; float:right; margin-right:18px; display:inline;}
+.in_comments_title{margin-top:15px; font-size:16px; width:100%; display:inline-block; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;}
+.in_comments_period{margin-top:6px;}
+.in_comments_time{margin-top:12px; color:#666;}
+.in_comments_about{line-height:26px; margin-top:10px; font-size:14px; color:#666;}
+
+.in_section_kw{width:100%; background-color:#ebebeb;}
+
+@media all and (max-width:1200px) {
+    .in_banner{width:1160px;overflow:hidden;}
+    .in_section_w{width:1160px;overflow:hidden;}
+}
+
+.home-keywords-con{min-width:1176px;margin:0px auto;}
+.home-keywords{width:1176px;margin:0 auto;padding:20px 0;border-top:1px solid #e0e0e0;}
+.home-keywords .li{width:180px;margin:10px 8px;float:left;display:inline-block;}
+.home-keywords .li .img{height:90px;overflow:hidden;text-align:center;background:#f1f1f1;}
+.home-keywords h2{display:block;padding:5px;text-align:center;font-size:14px;font-weight:normal;}
+.home-keywords a{}

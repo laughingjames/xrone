@@ -1,0 +1,52 @@
+
+<div class="header">
+	<span>个人信息</span>
+	<a href="/index/user/index" class="back"><i class="iconfont icon-left"></i></a>
+</div>
+
+<form name="userinfo" method="post" enctype="multipart/form-data" action="/index/user/updateinfo">
+
+	<ul class="dorm-book">
+		<li class="upload-head ta-center">
+				<span >
+					<input name="heade-img" type="file" />
+					<img class="heade-img" src="__IMG__/user/{$user['userpic']}">
+				</span>
+			<p>Upload HeadIcon</p>
+		</li>
+		<li>
+			<span class="book-tit">NAME</span>
+			<input type="text" name="name" placeholder="NAME" value="{$user['name']}"/>
+			<input type="text" name="id" placeholder="id" value="{$Think.session.id}" hidden="hidden"/>
+		</li>
+		<li>
+			<span class="book-tit">EMAIL</span>
+			<input type="text" required name="email" value="{$user.email}" placeholder="Please fill in your Email." />
+		</li>
+		<li>
+			<span class="book-tit">PHONE NO</span>
+			<input type="text"  required name="phone_no" value="{$user.phone_no}"  onkeyup="this.value=this.value.replace(/[^0-9-]+/,'');" placeholder="Please fill in your  phone number." />
+		</li>
+		<li>
+			<span class="book-tit">MAJOR</span>
+			<input type="text" required name="major" value="{$user.major}"  placeholder="Please fill in your country." />
+		</li>
+		<li>
+			<span class="book-tit">INTEREST</span>
+			<input type="text" required name="interest" value="{$user.interest}"  placeholder="Please fill in your country." />
+		</li>
+		<li>
+			<span class="book-tit">COUNTRY</span>
+			<input type="text" required name="country" value="{$user.country}"  placeholder="Please fill in your country." />
+		</li>
+		<li>
+			<span class="book-tit">PASSPORT</span>
+			<input type="text" required name="passport_no" value="{$user.passport_no}" placeholder="Please fill in your passport number." />
+		</li>
+
+	</ul>
+	<div class="step-btn">
+		<input type="submit"  value="UPDATE"></a>
+	</div>
+
+</form>

@@ -1,0 +1,69 @@
+<div class="footer">
+    <ul class="footer-page clearfix">
+        <li class="page-item">
+            <a href="{:url('/mobile')}">
+                <i class="iconfont icon-computer"></i>
+                <p>HelloShop</p>
+            </a>
+        </li>
+
+        {switch name="$Request.controller"}
+        {case value="Index"}
+        <li class="page-item active">
+            {/case}
+            {default /}
+        <li class="page-item">
+            {/switch}
+            <a href="/">
+                <i class="iconfont icon-index"></i>
+                <p>Application</p>
+            </a>
+        </li>
+
+        {switch name="$Request.controller"}
+            {case value="User"}
+             <li class="page-item active">
+            {/case}
+        {default /}
+            <li class="page-item">
+        {/switch}
+            <a href="{:url('/mobile/user/index')}">
+                <i class="iconfont icon-person1"></i>
+                <p>Personal</p>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<script src="__JS__/index/jquery.min.js"></script>
+<script src="__JS__/index/fastclick.js"></script>
+<script src="__JS__/index/slick.min.js"></script>
+
+<script src="__JS__/index/rem.js"></script>
+<script src="__JS__/index/basic.js"></script>
+<script src="__JS__/index/swiper.jquery.min.js"></script>
+<script>
+    $(function() {
+
+        $('.autoplay').slick({
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 2000,
+            dots:true,
+        });
+    });
+</script>
+<script >
+    $(function () {
+        var banner = new Swiper('.banner',{
+            autoplay: 5000,
+            pagination : '.swiper-pagination',
+            paginationClickable: true,
+            lazyLoading : true,
+            loop:true
+        });
+    });
+</script>
+
+</body>
+</html>

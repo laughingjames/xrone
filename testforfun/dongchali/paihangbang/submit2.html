@@ -1,0 +1,43 @@
+<!DOCTYPE HTML><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8" />
+<head>
+</head>
+<style>
+label{ font-size:30px;}
+input{ size:30;
+ border:1px solid red;
+ height:30px;
+ border-radius:20px;
+}
+.submit{
+	width:60px;
+	height:50px;
+	text-align:center}
+</style>
+<body>
+<script type="text/javascript">
+function check(){
+		var name=document.getElementById('name');
+		var moto=document.getElementById('moto');
+		if(name.value==''||moto.value==''){
+			alert('姓名或者座右铭不能为空!');
+			name.focus(); 
+			return false;
+		}
+	}
+</script>
+<form action="upload_file.php" method="post" enctype="multipart/form-data" onSubmit="check()">
+    <label>姓名:</label><input name="name" id="name" type="text">
+   <br>
+  	 <label>座右铭:</label> <input name="moto" id="moto" type="text">
+    <br>
+	<label for="file">头像上传:</label>
+    
+	<input type="file" name="file" id="file" /> 
+<br />
+	<input class="submit" type="submit" name="submit" value="提交" />
+    
+</form>
+
+</body>
+</html>

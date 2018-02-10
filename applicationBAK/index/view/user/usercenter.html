@@ -1,0 +1,75 @@
+<div class="header">
+	<span>Hello Helper</span>
+	<a href="/index/user/index"><span class="user"><i class="iconfont icon-person"></i></span></a>
+</div>
+	<body class="bge">
+		<div class="write-info">
+			<span>
+			{eq name="$Think.session.name" value=""}
+				<a href="/index/user/login"><img src="__IMG__/upload/user/default.png"></a>
+			{else/}<img src="__IMG__/user/{$Think.session.head_url}"></p>
+			{/eq}
+
+
+			</span>
+			{eq name="$Think.session.name" value=""}
+				<p>Not Login.</p>
+			{else/}<p>{$Think.session.name}</p>
+			{/eq}
+
+
+			<span class="goin"><i class="iconfont icon-right"></i></span>
+		</div>
+		<ul class="ask-box">
+			<li class="ask-item">
+				<a href="/index/user/userinfo">
+				    <i class="iconfont icon-data"></i>
+				    <span class="ask-word">INFO</span>
+				    <span class="goin"><i class="iconfont icon-right"></i></span>
+				</a>
+			</li>
+			<!--<li class="ask-item nobor">-->
+				<!--<a href="changepsw.html">-->
+				    <!--<i class="iconfont icon-changpsw"></i>-->
+				    <!--<span class="ask-word">CHANGE</span>-->
+				    <!--<span class="goin"><i class="iconfont icon-right"></i></span>-->
+				<!--</a>-->
+			<!--</li>-->
+			
+		</ul>
+
+		<ul class="ask-box">
+			<li class="ask-item">
+				<a href="#">
+					<i class="iconfont icon-answer"></i>
+					<span class="ask-word">FEEDBACK</span>
+					<span class="goin"><i class="iconfont icon-right"></i></span>
+				</a>
+			</li>
+			<li class="ask-item nobor">
+				<a href="#">
+					<i class="iconfont icon-ask"></i>
+					<span class="ask-word">ABOUT</span>
+					<span class="goin"><i class="iconfont icon-right"></i></span>
+				</a>
+			</li>
+
+		</ul>
+
+
+		<div class="sign-out">
+				<a href="#">
+					<i class="iconfont icon-logout"></i>
+				   <span>LOG OUT</span>
+				</a>
+		</div>
+		<div class="outlayer">
+			<div class="tip-box">
+				<h3>LOG OUT</h3>
+				<p class="ta-right">
+					<a href="{:url('/index/user/logout')}" class="ok">OK</a>
+					<a href="#" class="cancel">CANCEL</a>
+				</p>
+			</div>
+			<div class="cover"></div>
+		</div>

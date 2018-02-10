@@ -1,0 +1,154 @@
+
+<!doctype html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>温州大学数信学院0+1工作室</title>
+	<link rel="stylesheet" type="text/css" href="css/default.css">
+	<link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
+	<link rel="stylesheet" href="css/style.css"> <!-- Resource style -->
+	<script src="js/modernizr.js"></script> <!-- Modernizr -->
+
+    <link rel="stylesheet" type="text/css" href="css/normalize.css" />
+	<link rel="stylesheet" type="text/css" href="css/demo.css" />
+
+<!--必要样式-->
+	<link rel="stylesheet" type="text/css" href="css/component.css" />
+
+<script src="js/modernizr.custom.js"></script>
+    <script type="text/javascript">
+	function sleep(n) {
+    var start = new Date().getTime();
+    while(true) if(new Date().getTime()-start > n) break;
+    }
+function check()
+{
+		
+		
+		var name=document.getElementById('cd-name');
+		var number=document.getElementById('cd-company');
+		var notes=document.getElementById('cd-textarea');
+		if(name.value=='')
+		{
+			alert('姓名不能为空!');
+			name.focus(); 
+			return false;
+		}
+
+		if(number.value.length!=11)
+		{
+				console.log("%s",number);
+			alert('手机号码错误!');
+			number.focus(); 
+			return false;
+		}
+		
+		
+		name = encodeURIComponent(name.value); 
+		notes=encodeURIComponent(notes.value);
+		number=number.value;
+		console.log("%s",number);
+		alert('提交成功！');
+		window.location.href="recruit.php?cd-name="+name+"&cd-company="+number+"&cd-textarea="+notes;
+		
+}
+      
+</script>
+</head>
+<body>
+<iframe style="width:0; height:0; margin-top:-10px;" name="submitFrame" src="about:blank"></iframe>
+	<div class="container">
+
+		<form class="cd-form floating-labels" name="form" name="form"target="submitFrame">
+			<fieldset>
+				<legend>0+1工作室各类招聘报名登记表</legend>
+
+			
+
+				<div class="icon">
+					<label class="cd-label"  for="cd-name">姓名</label>
+					<input class="user" type="text" name="cd-name" id="cd-name" required>
+			    </div> 
+
+			    <div class="icon">
+			    	<label class="cd-label" for="cd-company">手机号(长号)</label>
+					<input class="company" type="text" name="cd-company" id="cd-company" required>
+			    </div> 
+
+			</fieldset>
+
+			<fieldset>
+
+			
+					
+
+				
+
+				<div class="icon">
+					<label class="cd-label" for="cd-textarea">自我介绍一下(包括专业、个人兴趣爱好等)</label>
+	      			<textarea class="message" name="cd-textarea" id="cd-textarea" ></textarea>
+				</div>
+
+				<div>
+			      <!--	<input type="submit" id="btn1" name="btn1" value="发送信息">-->
+			    </div>
+    
+	
+
+	<div class="box">
+		<!-- progress button -->
+		<div class="progress-button">
+
+			<button name="btn" id="btn" form="form" onClick="check()"><span>提交</span></button>
+			<svg class="progress-circle" width="70" height="70"><path d="m35,2.5c17.955803,0 32.5,14.544199 32.5,32.5c0,17.955803 -14.544197,32.5 -32.5,32.5c-17.955803,0 -32.5,-14.544197 -32.5,-32.5c0,-17.955801 14.544197,-32.5 32.5,-32.5z"/></svg>
+			<svg class="checkmark" width="70" height="70"><path d="m31.5,46.5l15.3,-23.2"/><path d="m31.5,46.5l-8.5,-7.1"/></svg>
+			<svg class="cross" width="70" height="70"><path d="m35,35l-9.3,-9.3"/><path d="m35,35l9.3,9.3"/><path d="m35,35l-9.3,9.3"/><path d="m35,35l9.3,-9.3"/></svg>
+		</div><!-- /progress-button -->
+		
+	</fieldset>
+		</form>
+
+<script type="text/javascript" src="js/classie.js"></script>
+<script type="text/javascript" src="js/uiProgressButton.js"></script>
+<script type="text/javascript">
+[].slice.call( document.querySelectorAll( '.progress-button' ) ).forEach( function( bttn, pos ) {
+	new UIProgressButton( bttn, {
+		callback : function( instance ) {
+			var progress = 0,
+				interval = setInterval( function() {
+					progress = Math.min( progress + Math.random() * 0.1, 1 );
+					instance.setProgress( progress );
+
+					if( progress === 1 ) {
+						instance.stop( pos === 1 || pos === 3 ? -1 : 1 );
+						clearInterval( interval );
+						 check();
+					}
+				}, 150 );
+		}
+	} );
+} );
+</script>
+
+		
+	</div>
+	
+	<script src="js/jquery-2.1.1.js"></script>
+	<script src="js/main.js"></script> <!-- Resource jQuery -->
+    	<div class="container">
+		<div class="icon">
+		<label class="cd-label" for="cd-textarea" style="font-size:18px">0+1工作室提供网页设计制作、网站服务器搭建、数据库信息管理、视频剪辑等服务</label>
+	      		
+				</div>
+                </div>
+                <div class="footer">
+				<div class="container"> 
+					<div class="footer-left">
+						<p style="font-size:18px">Copyright &copy; 2016.Company name All rights reserved.<a style="color:blue" target="_blank" href="http://www.xrone.cn/">0+1工作室;</a></p>
+                        <p></p>
+                        <br>
+					</div>
+</body>
+</html>

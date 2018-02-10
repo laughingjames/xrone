@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" /> 
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>温州大学四六级成绩查询</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<style type="text/css">
+		.form-horizontal{background:#fff;padding-bottom:40px;border-radius:15px;text-align:center}.form-horizontal .heading{display:block;color:#02BCF1;font-size:35px;font-weight:700;padding:35px 0;border-bottom:1px solid #f0f0f0;margin-bottom:30px}.form-horizontal .form-group{padding:0 40px;margin:0 0 25px 0;position:relative}.form-horizontal .form-group i{position:absolute;top:12px;left:60px;font-size:17px;color:#c8c8c8;transition:all .5s ease 0s}.form-horizontal .form-control{background:#f0f0f0;border:none;border-radius:20px;box-shadow:none;padding:0 20px 0 45px;height:40px;transition:all .3s ease 0s}.form-horizontal .form-control:focus{background:#e0e0e0;box-shadow:none;outline:0 none}body,html{font-size:100%;padding:0;margin:0}*,*:after,*:before{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}body{background:#00b4ef;color:#D5D6E2;font-weight:500;font-size:1.05em;font-family:"Microsoft YaHei","Segoe UI", "Lucida Grande", Helvetica, Arial,sans-serif}a{color:rgba(255, 255, 255, .6);outline:none;text-decoration:none;-webkit-transition:.2s;transition:.2s}a:hover,a:focus{color:#74777b;text-decoration:none}table tr td{padding:10px 0;font-size:22px}.form-horizontal .btn{font-size:14px;color:#fff;background:#00b4ef;border-radius:30px;padding:10px 45px;border:none;transition:all .5s ease 0s}@media only screen and (max-width: 479px){}
+	</style>
+</head>
+	<!--[if IE]>
+<script src="http://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+	<![endif]-->
+<script type="text/javascript" src="__JS__/base64.js"></script>
+<script src="__JS__/jquery-2.2.3.min.js"></script>
+<link href="__CSS__/jquery.mloading.css" rel="stylesheet" />
+<script src="__JS__/jquery.mloading.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+     	$("#btn").click(function () {
+           loading();
+			var key=check();
+			if(key){
+                post_data(key)
+			}
+
+        });
+	})
+
+	function post_data(key) {
+        $("body").mLoading("show");//显示loading组件
+        $.post('/testforfun/index/getInfo', {
+            key:key,
+        },function(data,status){
+            setTimeout(function () {
+                $("body").mLoading("hide");//隐藏loading组件
+			}, 2000);
+            console.log(data);
+            console.log(status);
+            if(status=="success"){
+//					alert("success");
+            }else{
+                alert("请稍后再尝试");
+            }
+        });
+    }
+    function loading() {
+        $("body").mLoading({
+            text:"Please wating....",//加载文字，默认值：加载中...
+            icon:"",//加载图标，默认值：一个小型的base64的gif图片
+            html:false,//设置加载内容是否是html格式，默认值是false
+            content:"Please wating....",//忽略icon和text的值，直接在加载框中显示此值
+            mask:true//是否显示遮罩效果，默认显示
+        });
+        $("body").mLoading("hide");//隐藏loading组件
+    }
+	function check(){
+			var username=$("#username").val();
+			var number=$("#password").val();
+			if(username==''||number=='') {
+				alert('姓名或者学号不能为空!');
+                $("#username").focus();
+				return false;
+			}
+			var strCombine="{xh="+number+", xm="+username+"}";
+			var b = new Base64();
+			var str = b.encode(strCombine);
+			return str;
+//			window.location.href="http://jwc.wzu.edu.cn/xxy.jsp?urltype=tree.TreeTempUrl&wbtreeid=1082&condition1="+str;
+//			console.log(str)
+	}
+</script>
+
+<body>
+<div class="demo" style="padding: 20px 0;">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-offset-3 col-md-6">
+				<form  class="form-horizontal"  > <span class="heading">数据查询</span>
+					<div class="form-group">
+						<input type="text" class="form-control" name="username" id="username" placeholder="姓名" /> <i class="fa fa-user"></i>
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control" name="password" id="password" placeholder="学号" /> <i class="fa fa-user"></i>
+					</div>
+					<input type="button" class="btn" id="btn" name="namebtn" value="查找" />
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+
+</html>
+   
+   
+	<div style="text-align:center;"><p>来自:<a href="http://www.xrone.cn/" target="_blank">温州大学0+1工作室</a></p></div>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+</body>
+</html>

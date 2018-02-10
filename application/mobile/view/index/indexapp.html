@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+	<meta name="description" content="">
+	<link rel="stylesheet" type="text/css" href="__CSS__/index/slick.css" />
+	<link rel="stylesheet" type="text/css" href="__CSS__/index/base.css" />
+	<link rel="stylesheet" type="text/css" href="__CSS__/index/style.css" />
+	<link rel="stylesheet" type="text/css" href="__CSS__/index/all.css"/>
+	<link rel="stylesheet" type="text/css" href="__CSS__/index/swiper.min.css"/>
+	<link rel="stylesheet" type="text/css" href="__CSS__/index/iconfont/iconfont.css" />
+	<link href="__PUBLIC__/view_res/mobile/css/home.css" type="text/css" rel="Stylesheet" />
+	<script src="__JS__/index/jquery.min.js"></script>
+	<script src="__JS__/index/fastclick.js"></script>
+	<script src="__JS__/index/slick.min.js"></script>
+	<script src="__JS__/index/rem.js"></script>
+	<script src="__JS__/index/basic.js"></script>
+	<script src="__JS__/index/swiper.jquery.min.js"></script>
+	<script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?c028eb7b27166de04494e341cfeea297";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+	</script>
+
+	<title>HelloShop</title>
+</head>
+
+<body>
+
+<div class="header">
+	<span>Hello Helper</span>
+	<a href="{:url('User/index')}"><span class="user"><i class="iconfont icon-person"></i></span></a>
+</div>
+<div class="banner swiper-container">
+	<div class="swiper-wrapper">
+		<div class="swiper-slide"><a href="javascript:void(0)"><img class="swiper-lazy" data-src="__IMG__/index/banner1.png" alt=""></a></div>
+		<div class="swiper-slide"><a href="javascript:void(0)"><img class="swiper-lazy" data-src="__IMG__/index/banner1.png" alt=""></a></div>
+		<div class="swiper-slide"><a href="javascript:void(0)"><img class="swiper-lazy" data-src="__IMG__/index/banner1.png" alt=""></a></div>
+		<div class="swiper-slide"><a href="javascript:void(0)"><img class="swiper-lazy" data-src="__IMG__/index/banner1.png" alt=""></a></div>
+	</div>
+	<div class="swiper-pagination"></div>
+</div>
+		<div class="menu">
+			<ul class="clearfix">
+				<li>
+					<a href="/index/job">
+						<img src="__IMG__/index/icon1.png">
+						<p class="menu-txt">PART-TIME JOB</p>
+					</a>
+				</li>
+				<li>
+					<a href="/index/houserenting">
+						<img src="__IMG__/index/icon2.png">
+						<p class="menu-txt">HOUSE-RENTING</p>
+					</a>
+				</li>
+				<li>
+					<a href="/index/seconedhand">
+						<img src="__IMG__/index/icon3.png">
+						<p class="menu-txt">SECONED-HAND TRADE</p>
+					</a>
+				</li>
+
+			</ul>
+			<ul class="clearfix">
+				<li>
+					<a href="http://hellohelper.cn/">
+						<img src="__IMG__/index/icon4.png">
+						<p class="menu-txt">TRAVEL</p>
+					</a>
+				</li>
+				<li>
+					<a href="http://hellohelper.cn/">
+						<img src="__IMG__/index/icon5.png">
+						<p class="menu-txt">DATA</p>
+					</a>
+				</li>
+				<li>
+					<a href="http://hellohelper.cn/">
+						<img src="__IMG__/index/icon6.png">
+						<p class="menu-txt">NOTICE</p>
+					</a>
+				</li>
+				<!--</a>-->
+				<!--<li>-->
+					<!--<a href="data.html">-->
+						<!--<img src="__IMG__/index/icon7.png">-->
+						<!--<p class="menu-txt">DATA</p>-->
+					<!--</a>-->
+				<!--</li>-->
+				<!--<li>-->
+					<!--<a href="ask.html">-->
+						<!--<img src="__IMG__/index/icon8.png">-->
+						<!--<p class="menu-txt">HELP</p>-->
+					<!--</a>-->
+				<!--</li>-->
+			</ul>
+		</div>
+
+		<div class="brief">
+			<h3 class="brief-tit">Hello</h3>
+			<div class="brirf-content clearfix">
+				<div class="bc-left fl">
+					<img src="__IMG__/index/hellohelper.png">
+				</div>
+				<div class="bc-right fr">
+					HOPE YOU HAVE A EASY LIFE IN WENZHOU UNIVERSITY.
+				</div>
+			</div>
+		</div>
+
+		<dl class="news">
+			<dt class="news-tit">Helper</dt>
+			<dd class="news-content clearfix">
+				<div class="nc-left fl">
+					<img src="__IMG__/index/hellohelper.png">
+				</div>
+				<div class="nc-right fr">
+					<a class="ncr-top">
+						WE WILL OFFER MUCH USERFUL INFOMAION:PART-TIME JOB,HOUSE-RENTING,SECONED-HAND TRADE,TRAVEL ACTIVITIES...
+					</a>
+					<span class="nc-time">2018-1-1</span>
+				</div>
+			</dd>
+		</dl>
+
+<script >
+    $(function () {
+        var banner = new Swiper('.banner',{
+            autoplay: 5000,
+            pagination : '.swiper-pagination',
+            paginationClickable: true,
+            lazyLoading : true,
+            loop:true
+        });
+    });
+</script>
+
+{block name="footer"}
+{include file="public/footer-nav" /}
+{/block}

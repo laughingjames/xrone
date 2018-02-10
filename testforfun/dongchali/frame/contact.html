@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Untitled Document</title>
+
+</head>
+<link href="theme/default/base.css" rel="stylesheet" type="text/css" /><link href="theme/default/sub.css" rel="stylesheet" type="text/css" /></head>
+<script src="inc/jquery-1.7.2.min.js" type="text/javascript"></script>
+<script src="inc/jquery-ui.js" type="text/javascript"></script>
+<script src="inc/jquery.form.js" type="text/javascript"></script>
+<script src="inc/jquery.common.js" type="text/javascript"></script>
+<script src="inc/report.js.html" type="text/javascript"></script>
+<script src="inc/normal.js" type="text/javascript"></script>
+<script type="text/javascript" src="inc/new.js"></script>
+    <script type="text/javascript">
+
+        function searchQuery(page) {
+            var paraJson = $.toJSON($("#queryForm").serializeObject());
+            $("#queryDiv").html("加载中...");
+            $("#queryDiv").load("searchQuery.aspx", { "page": page, "ps": 10, "paraJson": paraJson, "time": Math.random() }, function () {
+                return false;
+            });
+            return false;
+        }
+        $(function () {
+        })
+
+
+
+    </script>
+
+<body>
+<div class="windowleft">
+	<ul>
+		<li><a ><span>020-84115200</span><img src="theme/default/icons/SKR2.png" alt=""></a></li>
+		<li><a href="http://q.url.cn/s/YI8GnXm" target="_blank"><span>在线QQ</span><img src="theme/default/icons/SKR-qq.png" alt=""></a></li>
+		<li id="openw"><a href="feedback.aspx.html"><span>在线留言</span></a><img src="theme/default/icons/SKR4.png" alt=""></li>
+		<li><a href="index.html"><span>返回首页</span><img src="theme/default/icons/SKR1.png" alt=""></a></li>
+	</ul>
+</div>
+</body>
+</html>

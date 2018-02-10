@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
+    <title>House Pictures</title>
+    <script src="http://www.jq22.com/jquery/1.8.3/jquery.min.js"></script>
+    <!--<link rel="stylesheet" type="text/css" href="css/demo.css">-->
+    <script type="text/javascript" src="js/simple.slide.min.js"></script>
+    <!--<link rel="stylesheet" href="css/animate.css">-->
+    <link rel="stylesheet" href="css/simple.slide.css">
+
+</head>
+<body>
+
+<div class="lk content">
+    <div class="main">
+        <h1 style="text-align: center" class="h2">House Pictures</h1>
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        function getQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return decodeURI(r[2]); return null;
+        }
+        var pic_array=getQueryString("array").split(',');
+        console.log(pic_array);
+        var pic_length=pic_array.length;
+        pic_length=pic_length==1?1: pic_length-1;
+        for(var i=0;i<pic_length;i++){
+            $(".main").append("" +
+                " <a  i=uploads/"+pic_array[i]+" class=\"Slide One\" style=\"cursor: pointer;\"><img src=uploads/"+pic_array[i]+" ></a>");        // 追加新元素
+        }
+
+        $('.One').simpleSlide();
+    });
+
+
+
+
+</script>
+
+
+
+
+
+</body>
+</html>

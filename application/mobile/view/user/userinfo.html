@@ -1,0 +1,78 @@
+{extend name="public:base" /}
+{block name="head"}
+<link href="__PUBLIC__/view_res/mobile/css/login.css" type="text/css" rel="Stylesheet" />
+<link href="__PUBLIC__/jquery-weui/dist/lib/weui.min.css" type="text/css" rel="Stylesheet" />
+<link href="__PUBLIC__/jquery-weui/dist/css/jquery-weui.min.css" type="text/css" rel="Stylesheet" />
+<script src="__PUBLIC__/jquery-weui/dist/js/jquery-weui.min.js"></script>
+<link rel="stylesheet" type="text/css" href="__CSS__/index/slick.css" />
+<link rel="stylesheet" type="text/css" href="__CSS__/index/base.css" />
+<link rel="stylesheet" type="text/css" href="__CSS__/index/style.css" />
+<link rel="stylesheet" type="text/css" href="__CSS__/index/all.css"/>
+<link rel="stylesheet" type="text/css" href="__CSS__/index/swiper.min.css"/>
+<link rel="stylesheet" type="text/css" href="__CSS__/index/iconfont/iconfont.css" />
+
+{/block}
+{block name="header"}
+<div class="listTopcaption">
+	<div class="holder">
+		<a class="listTopArrow"  onclick="location.href='index'"></a>
+		<a class="listTopArrow home"  href="{:url('/mobile')}"></a>
+		<p>{$top_title}</p>
+	</div>
+</div>
+<div class="TopcaptionPos"></div>
+{/block}
+
+{block name="content"}
+
+<form name="userinfo" method="post" enctype="multipart/form-data" action="{:url('User/updateInfo')}">
+
+	<ul class="dorm-book">
+		<li class="upload-head ta-center">
+				<span >
+					<input name="head-img" type="file" />
+					<img class="heade-img" src="__IMG__/user/{$user['userpic']}">
+				</span>
+			<p>Upload HeadIcon</p>
+		</li>
+		<li>
+			<span class="book-tit">NAME</span>
+			<input type="text" name="username" placeholder="NAME" value="{$user['username']}"/>
+			<input type="text" name="uid" placeholder="id" value="{$user['uid']}" hidden="hidden"/>
+		</li>
+
+		<li>
+			<span class="book-tit">EMAIL</span>
+			<input type="text" required name="email" value="{$user.email}" placeholder="Please fill in your Email." />
+		</li>
+		<li>
+			<span class="book-tit">PHONE NO</span>
+			<input type="text"  required name="telephone" value="{$user.telephone}"  onkeyup="this.value=this.value.replace(/[^0-9-]+/,'');" placeholder="Please fill in your  phone number." />
+		</li>
+		<li>
+			<span class="book-tit">MAJOR</span>
+			<input type="text" required name="major" value="{$user.major}"  placeholder="Please fill in your major." />
+		</li>
+		<li>
+			<span class="book-tit">INTEREST</span>
+			<input type="text" required name="interest" value="{$user.interest}"  placeholder="Please fill in your interest." />
+		</li>
+		<li>
+			<span class="book-tit">COUNTRY</span>
+			<input type="text" required name="country" value="{$user.country}"  placeholder="Please fill in your country." />
+		</li>
+		<li>
+			<span class="book-tit">PASSPORT</span>
+			<input type="text" required name="passport_no" value="{$user.passport_no}" placeholder="Please fill in your passport number." />
+		</li>
+
+
+	</ul>
+
+	<div class="step-btn">
+		<input type="submit"  value="UPDATE"></a>
+	</div>
+</form>
+
+
+{/block}

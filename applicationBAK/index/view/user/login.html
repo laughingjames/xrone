@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!--Head-->
+<head>
+    <meta charset="utf-8" />
+    <title>Login Page</title>
+    <meta name="description" content="login page" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
+    <link href="__CSS__/bootstrap.4.0.0.min.css" rel="stylesheet" />
+    <link id="bootstrap-rtl-link" href="" rel="stylesheet" />
+    <link href="__CSS__/font-awesome.min.css" rel="stylesheet" />
+    <link id="beyond-link" href="__CSS__/user/beyond.min.css" rel="stylesheet" />
+    <link href="__CSS__/user/user.min.css" rel="stylesheet" />
+    <link href="__CSS__/user/animate.min.css" rel="stylesheet" />
+    <link id="skin-link" href="" rel="stylesheet" type="text/css" />
+    <script src="__JS__/user/skins.min.js"></script>
+
+</head>
+<!--Head Ends-->
+<!--Body-->
+<body>
+    <div class="login-container animated fadeInDown">
+        <div class="loginbox bg-white">
+            <div class="loginbox-title">Login</div>
+            <div class="loginbox-social">
+                <!--<div class="social-title ">Connect with Your Social Accounts</div>-->
+                <!--<div class="social-buttons">-->
+                    <!--<a href="" class="button-facebook">-->
+                        <!--<i class="social-icon fa fa-facebook"></i>-->
+                    <!--</a>-->
+                    <!--<a href="" class="button-twitter">-->
+                        <!--<i class="social-icon fa fa-twitter"></i>-->
+                    <!--</a>-->
+                    <!--<a href="" class="button-google">-->
+                        <!--<i class="social-icon fa fa-google-plus"></i>-->
+                    <!--</a>-->
+                <!--</div>-->
+            </div>
+            <!--<div class="loginbox-or">-->
+                <!--<div class="or-line"></div>-->
+                <!--<div class="or">OR</div>-->
+            <!--</div>-->
+
+           <form action="/index/user/login_action" method="post">
+            <div class="loginbox-textbox">
+                <input type="text" class="form-control" name="phone_no" placeholder="Phone" />
+            </div>
+            <div class="loginbox-textbox">
+                <input type="password" class="form-control" name="password" placeholder="Password" />
+            </div>
+            <!--<div class="loginbox-forgot">-->
+                <!--<a href="">Forgot Password?</a>-->
+            <!--</div>-->
+            <div class="loginbox-submit">
+                <input type="submit" class="btn btn-primary btn-block" value="Login">
+            </div>
+            <center><div style="width: 220px;"  class="loginbox-signup">
+                <a  href="/index/user/register">
+                    <input type="button" class="btn btn-primary btn-block" value="Register">
+                </a>
+            </div>
+            </center>
+           </form>
+        </div>
+
+        <div class="logobox">
+        </div>
+    </div>
+
+    <!--Basic Scripts-->
+    <script src="__JS__/jquery-2.2.3.min.js"></script>
+    <script src="__JS__/bootstrap.min.js"></script>
+    <!--Beyond Scripts-->
+    <!--<script src="__JS__/user/beyond.js"></script>-->
+    <!--Google Analytics::Demo Only-->
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'http://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-52103994-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+</body>
+<!--Body Ends-->
+</html>

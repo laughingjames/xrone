@@ -1,0 +1,65 @@
+
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>Seconed Hand</title>
+<!-- for-mobile-apps -->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<meta name="keywords" content="Fly To Cart Widget Responsive, Login form web template, Sign up Web Templates, Flat Web Templates, Login signup Responsive web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<!-- //for-mobile-apps -->
+<link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+<link href="__CSS__/houserentingStyle.css" rel="stylesheet" type="text/css" media="all" />
+ <script src="__JS__/jquery-2.2.3.min.js"></script>
+</head>
+<body>
+<div class="content">
+	<div class="con-top">
+	</div>
+	<div class="con-bot">
+	</div>
+	<div class="fly-cart">
+		<h1>Seconed Hand</h1>
+
+			<div class="wrapper">
+
+				<div class="clear"></div>
+				<div class="items">
+					{volist name="list" id="vo"}
+					{if condition="($i%3 == 1)"}
+						<div class="item fly-item1">
+					{elseif condition="$i%3 == 2"/}
+						<div class="item fly-item2">
+					{else /}
+						<div class="item fly-item3">
+					{/if}
+						<div class="item-img">
+							<img src="http://www.xrone.cn/addinfo/parttimejobs/seconed_hand/{$vo.pic_url} " alt="item" />
+						</div>
+						<h3>{$vo.title} </h3>
+							<h6>{$vo.detail}</h6>
+							 <h6>WeChat: {$vo.wechat}</h6>
+						<p>Price : <span>¥{$vo.price}</span></p>
+						<div class="clear"></div>
+					</div>
+					{/volist}
+
+				</div>
+			</div>
+		<p class="footer">© 2017 Classy Tabs Pricing Plans Widget. All rights reserved | Design by <a href="#">HelloHelper</a></p>
+	</div>
+</div>
+
+<script src="__JS__/jquery-ui.min.js"></script>
+	</div>
+</div>
+</body>
+</html>

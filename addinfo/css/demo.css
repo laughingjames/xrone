@@ -1,0 +1,58 @@
+body, html { font-size: 100%; 	padding: 0; margin: 0;}
+
+/* Reset */
+*,
+*:after,
+*:before {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+/* Clearfix hack by Nicolas Gallagher: http://nicolasgallagher.com/micro-clearfix-hack/ */
+.clearfix:before,
+.clearfix:after {
+	content: " ";
+	display: table;
+}
+
+.clearfix:after {
+	clear: both;
+}
+
+body{
+	background:#00b4ef;
+	color: #D5D6E2;
+	font-weight: 500;
+	font-size: 1.05em;
+	font-family: "Microsoft YaHei","Segoe UI", "Lucida Grande", Helvetica, Arial,sans-serif;
+}
+a{ color: rgba(255, 255, 255, 0.6);outline: none;text-decoration: none;-webkit-transition: 0.2s;transition: 0.2s;}
+a:hover,a:focus{color:#74777b;text-decoration: none;}
+//表格css
+		.moreleft{ width:350px; float:left; height:510px; overflow:hidden;}
+        .moreright{ width:340px; float:left; height:510px; overflow:hidden;}
+        .morelefttop{width:340px; margin:0 auto; height: 85px; }
+        .moreleftmid{width:340px; margin:0 auto; height: 470px; }
+   
+        .textspan{ display:block;  border:0px solid #838383; padding:2px; padding-left:3px; width:180px; height:14px; overflow:hidden; line-height:14px;}
+        .textspan2{ display:block; border:0px solid #838383; padding:0px; padding-left:1px; font-size:22px;}
+        
+        table tr td{ padding:10px 0; font-size:22px;}
+	
+
+		.form-horizontal .btn{
+		   
+		    font-size: 14px;
+		    color: #fff;
+		    background: #00b4ef;
+		    border-radius: 30px;
+		    padding: 10px 45px;
+		    border: none;
+		    transition: all 0.5s ease 0s;
+			
+		}
+		@media only screen and (max-width: 479px){
+		  
+			
+		}

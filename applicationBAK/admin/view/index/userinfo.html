@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>用户数据查询</title>
+<script src="__JS__/jquery-2.2.3.min.js"></script>
+<link rel="stylesheet" type="text/css" href="__CSS__/admin-table.css">
+
+<script type="text/javascript">
+function altRows(id){
+	if(document.getElementsByTagName){  
+		
+		var table = document.getElementById(id);  
+		var rows = table.getElementsByTagName("tr"); 
+		 
+		for(i = 0; i < rows.length; i++){
+			if(i % 2 == 0){
+				rows[i].className = "evenrowcolor";
+			}else{
+				rows[i].className = "oddrowcolor";
+			}      
+		}
+	}
+}
+
+window.onload=function(){
+	altRows('alternatecolor');
+}
+function jump(id) {
+	if(confirm('你确定要删除么？')) {
+	    $.post('userinfo/del', {
+	        "apply_id":id
+		} ,function (data,status) {
+            if (status == "success") {
+               alert(data+"删除成功！");
+                location.reload();
+			}
+		});
+	}
+}
+</script>
+
+
+
+</head>
+
+<body>
+
+<h1 align="center">用户信息表</h1>
+
+<table class="altrowstable" id="alternatecolor" width="100%" border="1" cellpadding="2" cellspacing="0">
+<tr> 
+	<th>序号</th>
+	<th>头像</th>
+	<th>姓名</th>
+	<th>手机号</th>
+	<th>护照号</th>
+	<th>性别</th>
+	<th>国家</th>
+	<th>专业</th>
+	<th>兴趣</th>
+	<th>删除</th>
+	{volist name="list" id="vo"}
+	<tr>
+
+		<td>{$i}</td>
+		<td><img src="__IMG__/user/{$vo.head_url}" width="100" height="100"/></td>
+		<td>{$vo.name}</td>
+		<td>{$vo.phone_no}</td>
+		<td>{$vo.passport_no}</td>
+		<td>
+			{if condition="($vo.sex == 0)"}
+			男
+			{else /}
+			女
+			{/if}
+		</td>
+		<td>{$vo.country}</td>
+		<td>{$vo.major}</td>
+		<td>{$vo.interest}</td>
+
+		<td>
+			<input type="button" class="btn" value="删除" onclick="jump('{$vo.id}')">
+		</td>
+
+	</tr>
+	{/volist}
+
+
+	</td>
+
+
+</tr>
+</table>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

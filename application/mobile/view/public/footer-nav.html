@@ -1,0 +1,9 @@
+<footer id="footer">
+<div class="bottom_nav">
+      <a class="nav_search {if condition="isset($flag) AND ($flag eq 'shop')"} hover{/if}" href="{:url('category/index')}"><i></i>购物Shop</a>
+    <a class="nav_index {if condition="isset($flag) AND ($flag eq 'index')"} hover{/if}" href="{:url('/mobile')}"><i></i>主页Index</a>
+
+    <a class="nav_shopcart" href="{:url('cart/index')}"><i></i>购物车</a>
+    <!--<a class="nav_shopcart {if condition="isset($flag) AND ($flag eq 'shopcart')"} hover{/if}" href="{:url('cart/index')}"><i></i>购物车ShopCart</a>-->
+    <a class="nav_me {if condition="isset($flag) AND ($flag eq 'user')"} hover{/if}" href="{:url('user/index')}"><i></i>个人<br/>Me</a></div>
+</footer>
