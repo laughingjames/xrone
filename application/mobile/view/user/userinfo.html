@@ -3,14 +3,22 @@
 <link href="__PUBLIC__/view_res/mobile/css/login.css" type="text/css" rel="Stylesheet" />
 <link href="__PUBLIC__/jquery-weui/dist/lib/weui.min.css" type="text/css" rel="Stylesheet" />
 <link href="__PUBLIC__/jquery-weui/dist/css/jquery-weui.min.css" type="text/css" rel="Stylesheet" />
-<script src="__PUBLIC__/jquery-weui/dist/js/jquery-weui.min.js"></script>
 <link rel="stylesheet" type="text/css" href="__CSS__/index/slick.css" />
 <link rel="stylesheet" type="text/css" href="__CSS__/index/base.css" />
 <link rel="stylesheet" type="text/css" href="__CSS__/index/style.css" />
 <link rel="stylesheet" type="text/css" href="__CSS__/index/all.css"/>
 <link rel="stylesheet" type="text/css" href="__CSS__/index/swiper.min.css"/>
 <link rel="stylesheet" type="text/css" href="__CSS__/index/iconfont/iconfont.css" />
+<link rel="stylesheet" type="text/css" href="__RES__/mobile/css/select_gj.css" />
 
+<script src="__PUBLIC__/jquery-weui/dist/js/jquery-weui.min.js"></script>
+<script src="__RES__/mobile/js/select_gj.min.js" type="text/javascript" ></script>
+<script src="__RES__/mobile/js/select2_1.js" type="text/javascript"></script>
+<style>
+	.dorm-book li, li{
+		font-size: 15px;
+	}
+</style>
 {/block}
 {block name="header"}
 <div class="listTopcaption">
@@ -46,7 +54,7 @@
 			<input type="text" required name="email" value="{$user.email}" placeholder="Please fill in your Email." />
 		</li>
 		<li>
-			<span class="book-tit">PHONE NO</span>
+			<span class="book-tit">PHONE</span>
 			<input type="text"  required name="telephone" value="{$user.telephone}"  onkeyup="this.value=this.value.replace(/[^0-9-]+/,'');" placeholder="Please fill in your  phone number." />
 		</li>
 		<li>
@@ -58,13 +66,15 @@
 			<input type="text" required name="interest" value="{$user.interest}"  placeholder="Please fill in your interest." />
 		</li>
 		<li>
-			<span class="book-tit">COUNTRY</span>
-			<input type="text" required name="country" value="{$user.country}"  placeholder="Please fill in your country." />
-		</li>
-		<li>
 			<span class="book-tit">PASSPORT</span>
 			<input type="text" required name="passport_no" value="{$user.passport_no}" placeholder="Please fill in your passport number." />
 		</li>
+		<li>
+
+			<span class="book-tit">COUNTRY</span>
+			<input type="text" required name="country" value="{$user.country}"  placeholder="Please fill in your country." />
+		</li>
+
 
 
 	</ul>

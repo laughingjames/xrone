@@ -24,7 +24,7 @@ class Cash extends MobileBase
 			if(!in_wechat()){
 				$this->redirect('login/login');	
 			}else{
-				$this->error('系统错误');
+				$this->error('系统错误/System error');
 			}			
 		}		
 	}

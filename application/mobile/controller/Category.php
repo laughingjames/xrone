@@ -23,7 +23,7 @@ class Category extends MobileBase
 
 		$this->assign('category',$tree->toOdArray(Db::name('category')->field('id,pid,name')->order('sort_order asc')->select()));
         $this->assign('flag','shop');
-        $this->assign('SEO',['title'=>'分类-'.config('SITE_TITLE')]);
+        $this->assign('SEO',['title'=>'分类/Category-'.config('SITE_TITLE')]);
 		
 		return $this->fetch();
 	}

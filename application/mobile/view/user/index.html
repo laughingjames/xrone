@@ -14,17 +14,18 @@
 <div class="uc-headwrap" style='background-image: url(__RES__/mobile/images/ucbag/bag.jpg);'>
     <div class="uc-head">
     	{if condition="in_wechat()"}
-	        <a class="headwrap"><img src="{$userinfo.userpic}/0"/></a>	             
+	        <a class="headwrap"><img src="{$userinfo.userpic}/0"/></a>
         {else/}
-	        <a class="headwrap">
+	        <a href = '{:url("user/userinfo")}' class="headwrap">
 	        	{if condition="!empty($userinfo['userpic'])"}
-	        	<img src="__IMG__/user/{$userinfo.userpic}"/>
+	        	 <img src="__IMG__/user/{$userinfo.userpic}"/>
 	        	{else/}
 	        	<img src="__RES__/mobile/images/icon/iconfont-iconname_2x.png"/>
 	        	{/if}
 	        </a>  
         {/if}
         <span class="uc-name">{$userinfo.username}</span>
+		<span class="uc-country">{$userinfo.country}</span>
     </div>
     <div class="comspreadstat clearfix">
         <span class="spread-item" onclick="location.href = '{:url("Points/points_list")}';"><b>{$userinfo.points}</b>积分/Integral</span>

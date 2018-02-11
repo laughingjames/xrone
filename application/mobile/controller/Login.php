@@ -35,21 +35,21 @@ class Login extends MobileBase{
 	public function validate_login($data){
 		
 			if(empty($data['telephone'])){
-				return ['error'=>'手机号必填'];
+				return ['error'=>'手机号必填/Phone number Required'];
 			}elseif(empty($data['password'])){
-				return ['error'=>'密码必填'];
+				return ['error'=>'密码必填/Password required'];
 			}
 			if(1==config('use_captcha')){				
 				if(!check_verify($data['captcha'])){
-					return ['error'=>'验证码错误'];
+					return ['error'=>'验证码错误/Verification Code Error'];
 				}
 			}
 			$user=Db::name('member')->where('telephone',$data['telephone'])->find();
 			
 			if(!$user){
-				return ['error'=>'账号不存在'];
+				return ['error'=>'账号不存在/Account doesn\'t Exist'];
 			}elseif(($user['checked']==0)&&(1==config('reg_check'))){//需要审核
-				return ['error'=>'该账号未审核通过'];
+				return ['error'=>'该账号未审核通过/The account has not been approved and passed'];
 			}
 			
 			if(think_ucenter_encrypt($data['password'],config('PWD_KEY'))==$user['password']){
@@ -71,9 +71,9 @@ class Login extends MobileBase{
 				
 				storage_user_action($user['uid'],$user['nickname'],config('FRONTEND_USER'),'登录了网站');
 				
-				return ['success'=>'登录成功','total'=>osc_cart()->count_cart_total($user['uid'])];
+				return ['success'=>'登录成功/Login Success','total'=>osc_cart()->count_cart_total($user['uid'])];
 			}else{
-				return ['error'=>'密码错误'];
+				return ['error'=>'密码错误/Password Error'];
 			}
 	}
 	
@@ -88,11 +88,11 @@ class Login extends MobileBase{
 				return $r;
 			}elseif($r['success']){
 				osc_service('mobile','user')->set_cart_total($r['total']);			
-				return ['success'=>'登录成功','url'=>cookie('jump_url')];
+				return ['success'=>'登录成功/Login Success','url'=>cookie('jump_url')];
 			}
 		}
-		$this->assign('SEO',['title'=>'登录-'.config('SITE_TITLE')]);
-		$this->assign('top_title','登录');
+		$this->assign('SEO',['title'=>'Login-'.config('SITE_TITLE')]);
+		$this->assign('top_title','登录/Login');
         return $this->fetch();
     }
     /**
@@ -181,6 +181,7 @@ class Login extends MobileBase{
                 return ['error'=>$validate->getError()];
             }
             $member['telephone']=$data['telephone'];
+            $member['country']=$data['country'];
             $member['userpic']=$this->base64_upload($data['headimg']);
             $member['username']=$data['username'];
             $member['email']=$data['email'];
@@ -226,6 +227,7 @@ class Login extends MobileBase{
                 return ['error'=>'注册失败'];
             }
         }
+
         $this->assign('SEO',['title'=>'注册-'.config('SITE_TITLE')]);
         $this->assign('top_title','注册');
         return $this->fetch();

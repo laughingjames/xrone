@@ -21,15 +21,15 @@ class Goods extends MobileBase{
 		cookie('jump_url',request()->url(true));
 					
 		if(!$list=osc_goods()->get_goods_info((int)input('param.id'))){
-			$this->error('商品不存在！！');
+			$this->error('商品不存在！！/Products do not exist!!');
 		}
 		
 		$this->assign('SEO',['title'=>$list['goods']['name'].'-'.config('SITE_TITLE'),
 		'keywords'=>$list['goods']['meta_keyword'],
 		'description'=>$list['goods']['meta_description']]);
 		
-		osc_goods()->update_goods_viewed((int)input('param.id'));		
-		
+		osc_goods()->update_goods_viewed((int)input('param.id'));
+
 		$this->assign('top_title',$list['goods']['name']);
 		$this->assign('goods',$list['goods']);
 		$this->assign('image',$list['image']);
@@ -58,13 +58,13 @@ class Goods extends MobileBase{
 		$goods_id=(int)input('post.id');
 		
 		if(!Db::name('goods')->where(array('goods_id'=>$goods_id,'status'=>1))->find()){
-			return ['error'=>'产品不存在'];
+			return ['error'=>'产品不存在/Products do not exist'];
 		}
 		
 		$uid=user('uid');
 		
 		if(!$uid){
-			return ['error'=>'请先登录'];
+			return ['error'=>'请先登录/Please Log on First! '];
 		}
 		
 		if(!Db::name('member_wishlist')->where(array('uid'=>$uid,'goods_id'=>$goods_id))->find()){
@@ -72,7 +72,7 @@ class Goods extends MobileBase{
 			Db::name('member')->where('uid',$uid)->setInc('wish',1);	
 		}				
 		
-		return ['success'=>'收藏成功'];
+		return ['success'=>'收藏成功/Collection Success'];
 	}
 
    function agent_share(){

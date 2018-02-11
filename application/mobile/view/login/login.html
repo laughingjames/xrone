@@ -13,33 +13,33 @@
 <div id="container">
 	<div class="register">
 
-	    <div class="weui_cells_title">用户登录</div>
+	    <div class="weui_cells_title">用户登录/User Login</div>
 	    <div class="weui_cells weui_cells_form">
 	    	
 	        <div class="weui_cell">
 	            <div class="weui_cell_hd">
-	                <label for="" class="weui_label">手机号</label>
+	                <label for="" class="weui_label">Phone</label>
 	            </div>
 	            <div class="weui_cell_bd weui_cell_primary">
-	                <input name="telephone" class="weui_input" required="" placeholder="请输入手机号" type="text">
+	                <input name="telephone" class="weui_input" required="" placeholder="Phone Number" type="text">
 	            </div>            
 	        </div>
 	   
 	        <div class="weui_cell">
 	            <div class="weui_cell_hd">
-	                <label for="" class="weui_label">密码</label>
+	                <label for="" class="weui_label">Password</label>
 	            </div>
 	            <div class="weui_cell_bd weui_cell_primary">
-	                <input name="password" class="weui_input" required="" pattern="[\w]{6,}" notmatchtips="密码至少6位" placeholder="请输入密码" type="password">
+	                <input name="password" class="weui_input" required="" pattern="[\w]{6,}" notmatchtips="The password is at least 6 bits" placeholder="password" type="password">
 	            </div>            
 	        </div>
 	        {if condition="1 eq config('use_captcha')"}	
 	        <div class="weui_cell weui_vcode">
 			<div class="weui_cell_hd">
-				<label class="weui_label">验证码</label>
+				<label class="weui_label">验证码/Captcha</label>
 			</div>
 			<div class="weui_cell_bd weui_cell_primary">
-				<input name="captcha" class="weui_input" type="text" placeholder="请输入验证码">
+				<input name="captcha" class="weui_input" type="text" placeholder="Verification Code">
 			</div>
 			<div class="weui_cell_ft">
 				<img class="verifyimg reloadverify" src="{:url('login/verify')}">
@@ -47,10 +47,10 @@
 			</div>
 			{/if}
 	    </div>
-	    <p class="weui_cells_tips"><a href="{:url('login/register')}">还没有账号？去注册</a></p>
+	    <p class="weui_cells_tips"><a href="{:url('login/register')}">还没有账号？去注册/No Account yet? Go to registration</a></p>
 	
 	    <div class="weui_btn_area">
-	        <a class="weui_btn weui_btn_primary js_btn">登录</a>
+	        <a class="weui_btn weui_btn_primary js_btn">登录/Login</a>
 	    </div>
 
 	</div>
