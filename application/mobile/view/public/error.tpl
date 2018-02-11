@@ -15,7 +15,7 @@
 	    </div>
 	    <div class="weui_opr_area">
 	        <p class="weui_btn_area">
-	            <a href="<?php echo($url);?>" class="weui_btn weui_btn_primary">返回</a>
+	            <a href="<?php echo($url);?>" class="weui_btn weui_btn_primary">Back</a>
 	        </p>
 	    </div>
 	   

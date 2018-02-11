@@ -15,25 +15,17 @@ namespace app\mobile\service;
 use think\Db;
 //用户数据
 class User{
-
-
 	//设置购物车商品数量
-
 	function set_cart_total($total){
 		session('mobile_total',$total);
 	}
-
 	function is_login(){
-		
 		$user=cookie('mobile_user_info');
-		
 	    if (empty($user)) {
 	        return null;
 	    } else {
 	        return $user['uid'];
 	    }
-		
 	}
-	
 }
 ?>
