@@ -1,0 +1,74 @@
+{extend name="public:base" /}
+{block name="head"}
+<link href="__PUBLIC__/view_res/mobile/css/login.css" type="text/css" rel="Stylesheet" />
+<link href="__PUBLIC__/jquery-weui/dist/lib/weui.min.css" type="text/css" rel="Stylesheet" />
+<link href="__PUBLIC__/jquery-weui/dist/css/jquery-weui.min.css" type="text/css" rel="Stylesheet" />
+<script src="__PUBLIC__/jquery-weui/dist/js/jquery-weui.min.js"></script>
+{/block} 
+{block name="header"}
+{include file="public/top-nav" /}
+{/block}
+
+{block name="content"}
+<div id="container">
+	<div class="register">
+
+	    <div class="weui_cells_title">账户找回/Account Forget</div>
+	    <div class="weui_cells weui_cells_form">
+	    	
+	        <div class="weui_cell">
+	            <div class="weui_cell_hd">
+	                <label for="" class="weui_label">Phone</label>
+	            </div>
+	            <div class="weui_cell_bd weui_cell_primary">
+	                <input name="telephone" class="weui_input" required="" placeholder="Phone Number" type="text">
+	            </div>            
+	        </div>
+	   
+
+
+	    </div>
+
+		<div class="weui_btn_area">
+	        <a  class="weui_btn weui_btn_primary js_btn">发送邮件找回/Send Mail</a>
+	    </div>
+		<div class="weui_btn_area">
+			<a style="color: red" id="tips" class="weui_btn weui_btn_primary js_btn"></a>
+		</div>
+	</div>
+</div>
+{/block}
+
+{block name="footer"}
+
+{/block}
+
+{block name="script"}
+<script>
+
+
+
+$('.js_btn').click(function(){
+	$.post(
+		"{:url('login/forget')}",
+		$('input[type=\'text\']'),
+		function(d){
+		    console.log(d);
+			if(d.error){			
+				$.toast(d.error,"forbidden");			
+			}else if(d.success){
+
+                $ ('#tips').text('Please go to '+d.email+' see the password.')
+                $ ('#tips').show ().delay (10000).fadeOut ();
+				$.toast(d.success);				
+				if(d.url){
+					setTimeout(function (){
+				        location.href=d.url;
+				    }, 1000);					
+				}				
+			}
+		}
+	);	
+});
+</script>
+{/block}

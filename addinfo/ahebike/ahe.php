@@ -95,7 +95,7 @@ table.altrowstable td {
 		
 		mysql_select_db('data');
 		mysql_query('set names utf8');
-		$rs=mysql_query('select *from ahebike order by time desc');
+		$rs=mysql_query('select * from ahebike order by time desc');
 
 ?>
 <table class="altrowstable" id="alternatecolor" width="100%" border="1" cellpadding="2" cellspacing="0">

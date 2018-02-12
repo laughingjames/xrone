@@ -482,3 +482,35 @@ function create_tables($module)
 function write_to_file($path,$data=array()){
     file_put_contents($path,var_export($data,true));
 }
+
+/**
+ * 发送邮箱
+ * @param type $data 邮箱队列数据 包含邮箱地址 内容
+ */
+function sendEmail($data = []) {
+    Vendor('phpmailer.phpmailer');
+    $mail = new PHPMailer(); //实例化
+    $mail->IsSMTP(); // 启用SMTP
+    $mail->Host = 'smtp.qq.com'; //SMTP服务器 以126邮箱为例子
+    $mail->Port = 465;  //邮件发送端口
+    $mail->SMTPAuth = true;  //启用SMTP认证
+    $mail->SMTPSecure = "ssl";   // 设置安全验证方式为ssl
+    $mail->CharSet = "UTF-8"; //字符集
+    $mail->Encoding = "base64"; //编码方式
+    $mail->Username = '1607637473@qq.com';  //你的邮箱
+    $mail->Password = 'pxusrrmaeprzjdei';  //你的密码
+    $mail->Subject = 'Find Forgot Password'; //邮件标题
+    $mail->From = '1607637473@qq.com';  //发件人地址（也就是你的邮箱）
+    $mail->FromName = 'HelloHelper';  //发件人姓名
+    if($data && is_array($data)){
+        foreach ($data as $k=>$v){
+            $mail->AddAddress($v['user_email'], "亲"); //添加收件人（地址，昵称）
+            $mail->IsHTML(true); //支持html格式内容
+            $mail->Body = $v['content']; //邮件主体内容
+            //发送成功就删除
+            if ($mail->Send()) {
+                return 1;
+            }
+        }
+    }
+}

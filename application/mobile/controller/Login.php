@@ -95,6 +95,38 @@ class Login extends MobileBase{
 		$this->assign('top_title','登录/Login');
         return $this->fetch();
     }
+
+
+    /**
+     * 密码找回
+     */
+    function forget(){
+        if(request()->isPost()){
+            $data=input('post.');
+            $user=Db::name('member')->where('telephone',$data['telephone'])->find();
+            if($user){
+               $password=think_ucenter_decrypt($user['password'],config('PWD_KEY'));
+               $content='Dear '.$user['username'].':<br> Your password is:<p style="color: red"> '.$password.'</p> 
+               Please delete this email as soon as possible,Thanks for your corporation.<br>--By HelloHelper.';
+               $send_data=[
+                    ['user_email'=>$user['email'],
+                        'content'=>$content]];
+                $returndata=sendEmail($send_data);
+                if($returndata==1){
+                    return ['success'=>'Success','email'=>$user['email']];
+                }
+
+                return ['error'=>'Fail'];
+
+            }
+            return ['error'=>'没有此账号/No Account of this Telephone'];
+
+
+        }
+        $this->assign('SEO',['title'=>'密码找回/Password Recovery-'.config('SITE_TITLE')]);
+        $this->assign('top_title','密码找回/Password Recovery');
+        return $this->fetch();
+    }
     /**
      * 原商城用户注册
      * @return array|mixed

@@ -445,6 +445,7 @@
          * 发送数据
          */
         function post_data() {
+            $("body").mLoading("show");//隐藏loading组件
             $.post("{:url('Login/register')}", {
                 telephone:$('#phone_no').val(),
                 password:$('#password').val(),
@@ -457,6 +458,7 @@
                 headimg:headdata,
                 sex:$('#sex').val(),
             },function(d){
+                $("body").mLoading("hide");//隐藏loading组件
                 if(d.error){
                     $.toast({
                         heading: 'Warning',
