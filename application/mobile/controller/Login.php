@@ -69,7 +69,7 @@ class Login extends MobileBase{
 				
 				DB::name('member')->where('uid',$user['uid'])->update($login);
 				
-				storage_user_action($user['uid'],$user['nickname'],config('FRONTEND_USER'),'登录了网站');
+				storage_user_action($user['uid'],$user['username'],config('FRONTEND_USER'),'登录了网站');
 				
 				return ['success'=>'登录成功/Login Success','total'=>osc_cart()->count_cart_total($user['uid'])];
 			}else{

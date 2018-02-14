@@ -49,6 +49,11 @@
                                 showHideTransition: 'plain',
                                 icon: 'warning'
                             })
+                            if(d.url){
+                                setTimeout(function (){
+                                    location.href=d.url;
+                                }, 3000);
+                            }
                         }else if(d.success){
                             $.toast({
                                 heading: 'Success',
