@@ -2,42 +2,21 @@
 /**
  * Created by PhpStorm.
  * User: Julis
- * Date: 2018/1/3
- * Time: 下午9:41
+ * Date: 2018/2/12
+ * Time: 下午5:17
  */
 
-namespace app\index\controller;
+namespace app\mobile\controller;
 
-use think\Controller;
-use app\index\model\Version;
-use app\index\model\ParttimeJob as ParttimeJobModel;
 use think\Db;
-use think\Request;
-use app\index\model\User as UserModel;
-class Job extends Controller
+
+class App extends MobileBase
 {
-    public function index()
-    {
-        $res=Db::name('parttime_job')
-            ->where('is_end',0)
-            ->order('time', 'desc')
-            ->select();
-        $data=[];
-        $n=0;
-        foreach ($res as $val){
-            $data[$n++]=$val;
-        }
-
-        $this->assign('title','Parttime-job');
-        $this->assign('list', $data);
-        return $this->fetch('index/parttimejob');
-    }
-    public function apply(Request $request){
-        $user=new UserModel();
+        //已提现
+    function parttimejob(){
         if(request()->isPost()){
-            $uid=input('post.')['id'];
+            $uid=input('post.')['uid'];
             $job_id=input('post.')['job_id'];
-
 
             $preview =db('apply_job')
                 ->where(['uid'=>$uid,'job_id'=>$job_id])
@@ -65,8 +44,28 @@ class Job extends Controller
                 $this->error('Failed.');
             }
         }
+        $res=Db::name('parttime_job')
+            ->where('is_end',0)
+            ->order('time', 'desc')
+            ->select();
+        $data=[];
+        $n=0;
+        foreach ($res as $val){
+            $data[$n++]=$val;
+        }
+
+        $this->assign('top_title','兼职/Parttime-Job');
+        $this->assign('list', $data);
+
+        return $this->fetch();
     }
 
+    function parttimejoblist(){
+        $this->assign('top_title','兼职/Parttime-Job');
+        $this->assign('SEO',['title'=>'搜索/Search-'.config('SITE_TITLE')]);
+        $this->assign('flag','search');
+        return $this->fetch();
 
+    }
 
 }

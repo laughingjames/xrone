@@ -1,0 +1,272 @@
+{extend name="public:base" /}
+
+{block name="head"}
+	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+    function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+	<link href="__CSS__/font-awesome.min.css" rel="stylesheet"  />
+	<link rel="stylesheet" type="text/css" href="__CSS__/easy-responsive-tabs.css " />
+	<link href="__CSS__/style.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="__CSS__/index/parttimejob.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="__CSS__/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
+	<link rel="stylesheet" type="text/css" href="__CSS__/index/iconfont/iconfont.css" />
+	<link href="__PUBLIC__/view_res/mobile/css/top_nav.css" type="text/css" rel="Stylesheet" />
+	<link href="//fonts.googleapis.com/css?family=Ubuntu+Condensed&subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext" rel="stylesheet">
+
+{/block}
+{block name="header"}
+{include file="public/top-nav" /}
+{/block}
+
+{block name="content"}
+
+<div class="main">
+
+<div class="w3l_main_grids">
+		<div id="parentHorizontalTab">
+			<ul class="resp-tabs-list hor_1">
+				<li>NORMAL</li>
+				<li>MIDDLE</li>
+				<li>SUPER</li>
+			</ul>
+			<div class="resp-tabs-container hor_1">
+				<div class="w3_agileits_tabs">
+					{volist name="list" id="vo"}
+					<div class="w3l_main_grid">
+
+						{if condition="($i%3 == 1)"}
+						<div class="w3l_main_grid_top ">
+							{elseif condition="$i%3 == 2"/}
+							<div class="w3l_main_grid_top agileits_main_grid_top">
+								{else /}
+								<div class="w3l_main_grid_top agileits_w3layouts_main_grid_top">
+									{/if}
+									<div hidden="hidden">{$vo.id}</div>
+									<h3>{$vo.job_name}</h3>
+									<p>{$vo.detail}<p>
+								</div>
+
+
+								<div class="w3l_main_grid_middle">
+									<ul>
+										<li><i class="fa" aria-hidden="true">Date:</i><br>{$vo.date}</li>
+										<li>
+											<i class="fa" aria-hidden="true"> Need counts:</i>
+											<a class="apply_counts" href="#">{$vo.apply_counts}</a>/
+											<i class="need_counts">{$vo.need_counts}</i>
+										</li>
+										<li><i class="fa" aria-hidden="true">Address:</i><br>{$vo.address}</li>
+										<li><i class="fa" aria-hidden="true">Notes:</i><br>{$vo.notes}</li>
+									</ul>
+									{if condition="($i%3 == 1)"}
+									<div class="w3l_main_grid_middle_pos">
+										{elseif condition="$i%3 == 2"/}
+										<div class="w3l_main_grid_middle_pos wthree_main_grid_middle_pos">
+											{else /}
+											<div class="w3l_main_grid_middle_pos w3_agile_main_grid_middle_pos">
+												{/if}
+												<p><i>¥</i>{$vo.salary}</p>
+											</div>
+										</div>
+
+										{if condition="($i%3 == 1)"}
+										<div class="w3ls_sign_up">
+											{elseif condition="$i%3 == 2"/}
+											<div class="w3ls_sign_up w3_agileits_sign_up">
+												{else /}
+												<div class="w3ls_sign_up w3layouts_sign_up">
+													{/if}
+													<div class="hidden_apply_counts" hidden="hidden">{$vo.apply_counts}</div>
+													<div class="hidden_need_counts" hidden="hidden">{$vo.need_counts}</div>
+													<div class="hidden_job_id" hidden="hidden">{$vo.id}</div>
+													<a  class="popup-with-zoom-anim" href="#small-dialog">APPLY FOR</a>
+												</div>
+											</div>
+
+											{/volist}
+
+											<div class="clear">
+											</div>
+										</div>
+
+
+
+										<div class="w3_agileits_tabs">
+											<div class="w3l_main_grid">
+												<div class="w3l_main_grid_top">
+													<h3>Coming soon</h3>
+													<p>Coming soon<p>
+												</div>
+												<div class="w3l_main_grid_middle">
+													<ul>
+														<li><i class="fa fa-wordpress" aria-hidden="true"></i>Coming soon.</li>
+														<li><i class="fa fa-star" aria-hidden="true"></i>Coming soon.</li>
+														<li><i class="fa fa-arrows-h" aria-hidden="true"></i>Coming soon.</li>
+														<li><i class="fa fa-hdd-o" aria-hidden="true"></i>Coming soon.</li>
+													</ul>
+													<div class="w3l_main_grid_middle_pos">
+														<p><i>¥</i>??<span> / day</span></p>
+													</div>
+												</div>
+												<div class="w3ls_sign_up">
+													<a class="popup-with-zoom-anim" href="#small-dialog">APPLY</a>
+												</div>
+											</div>
+
+											<div class="clear"> </div>
+										</div>
+										<div class="w3_agileits_tabs">
+											<div class="w3l_main_grid">
+												<div class="w3l_main_grid_top">
+													<h3>Coming soon</h3>
+													<p>Coming soon<p>
+												</div>
+												<div class="w3l_main_grid_middle">
+													<ul>
+														<li><i class="fa fa-wordpress" aria-hidden="true"></i>Coming soon</li>
+														<li><i class="fa fa-star" aria-hidden="true"></i>Coming soon</li>
+														<li><i class="fa fa-arrows-h" aria-hidden="true"></i>Coming soon</li>
+														<li><i class="fa fa-hdd-o" aria-hidden="true"></i>Coming soon</li>
+													</ul>
+													<div class="w3l_main_grid_middle_pos">
+														<p><i>¥</i>??<span> / day</span></p>
+													</div>
+												</div>
+												<div class="w3ls_sign_up">
+													<a class="popup-with-zoom-anim" href="#small-dialog">Apply</a>
+												</div>
+											</div>
+
+											<div class="clear"> </div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+
+							<div id="small-dialog" class="mfp-hide w3ls_small_dialog wthree_pop">
+
+								{eq name="$Think.cookie.mobile_user_info" value=""}
+								<h3>Login</h3>
+								<div class="agileits_modal_body">
+									<h4>You didn't login,Click to login.</h4>
+
+									<a href="{:url('/mobile/login/login')}" >
+										<button value="Apply">Login</button></a>
+
+								</div>
+								{else}
+								<h3>Apply</h3>
+								<div class="agileits_modal_body">
+									<h4>Are you sure to apply?</h4>
+									<form method="post" action="{:url('mobile/app/parttimejob')}">
+										<input type="hidden" id="job_id" name="job_id" value="">
+										<input type="hidden" id="uid" name="uid" value="{$Think.cookie.mobile_user_info.uid}">
+										<button id="job_apply" value="Apply">APPLY</button>
+									</form>
+
+
+									<!--<h5>Have problem? <a href="http://www.baidu.com">Click to understand.</a></h5>-->
+								</div>
+								{/eq}
+
+							</div>
+							<div class="agileits_copyright">
+								<p>© 2017 Classy Tabs Pricing Plans Widget. All rights reserved | Design by <a href="#">HelloHelper</a></p>
+							</div>
+							<!-- pop-up-box -->
+							<script src="__JS__/jquery.magnific-popup.js" type="text/javascript"></script>
+							<!--//pop-up-box -->
+							<script>
+                                $(document).ready(function() {
+                                    $('.popup-with-zoom-anim').magnificPopup({
+                                        type: 'inline',
+                                        fixedContentPos: false,
+                                        fixedBgPos: true,
+                                        overflowY: 'auto',
+                                        closeBtnInside: true,
+                                        preloader: false,
+                                        midClick: true,
+                                        removalDelay: 300,
+                                        mainClass: 'my-mfp-zoom-in'
+                                    });
+                                });
+
+							</script>
+							<!--Plug-in Initialisation-->
+							<script src="__JS__/easyResponsiveTabs.js"></script>
+							<script type="text/javascript">
+                                $(document).ready(function() {
+                                    //Horizontal Tab
+                                    $('#parentHorizontalTab').easyResponsiveTabs({
+                                        type: 'default', //Types: default, vertical, accordion
+                                        width: 'auto', //auto or any width like 600px
+                                        fit: true, // 100% fit in a container
+                                        tabidentify: 'hor_1', // The tab groups identifier
+                                        activate: function(event) { // Callback function if tab is switched
+                                            var $tab = $(this);
+                                            var $info = $('#nested-tabInfo');
+                                            var $name = $('span', $info);
+                                            $name.text($tab.text());
+                                            $info.show();
+                                        }
+                                    });
+                                });
+							</script>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+    var job_id;
+    $('.popup-with-zoom-anim').click(function () {
+        var applyCount=$(this).parent().children('.hidden_apply_counts').text();
+        var needCount=$(this).parent().children('.hidden_need_counts').text();
+        job_id=$(this).parent().children('.hidden_job_id').text();
+        $('#job_id').val(job_id);
+
+        if(Number(applyCount)>=Number(needCount)){
+            alert("Sorry,Now this work has been full of people," +
+                " if you still need a part-time, " +
+                "you can leave your contact information, " +
+                "if the staff has changed, we will notify you. " +
+                "Thank You for Your Cooperation.")
+        }
+    });
+
+    $('#apply').click(function(){
+        var name = document.getElementById("name").value;
+        var phone_no = document.getElementById("phone_no").value;
+        var passport_no = document.getElementById("passport_no").value;
+        var country = document.getElementById("country").value;
+
+        if(name==""||phone_no==""||passport_no==""||country==""){
+            alert("PLEASE COMPLETE THE FORM.");
+        }
+        else{
+            $.post('/index/job/apply',{
+                    name:name,
+                    phone_no:phone_no,
+                    passport_no:passport_no,
+                    country:country,
+                    job_id:job_id,
+					uid:$('#uid').val(),
+            },
+                function (data,status) {
+                    if (status == "success") {
+                        alert("APPLICATION IS SUCCESSFUL, PLEASE WAIT PATIENTLY. THANKS FOR CORPERATION.\n");
+                    }else{
+                        alert("APPLICATION IS FAILED.PLEASE CONTACT THE MANAGER.\n");
+                    }
+                    location.reload();
+
+                },"TEXT");
+        }
+    });
+
+</script>
+
+{/block}

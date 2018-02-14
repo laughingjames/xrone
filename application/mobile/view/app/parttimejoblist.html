@@ -1,0 +1,74 @@
+{extend name="public:base" /}
+{block name="jquery"}{/block}  
+{block name="head"}
+<link href="__PUBLIC__/view_res/mobile/css/productlist.css" type="text/css" rel="Stylesheet" />
+{/block} 
+{block name="header"}
+{include file="public/top-nav" /}
+{/block}
+
+{block name="content"}
+
+<input type="hidden" value="{:input('param.search')}" id="searchkey" />
+<input type="hidden" value="goods_id" id="orderby" />
+
+<div class="subnav_wra">
+    <section class="subnavBox clearfix">
+        <div class="subnav" orderby="goods_id"><span>最新<br>New</span></div>
+        <div class="subnav" orderby="price"><span>价格<br>Price<b class="up _priceB"></b></span></div>
+        <div class="subnav" orderby="sale_count"><span>销量<br>Sales</span></div>
+        <div class="subnav" orderby="viewed"><span>人气<br>Popularity</span></div>
+    </section>
+    <div id="plistDp"></div>
+</div>
+
+<div id="product_list" class="clearfix"><div class="clearfix pdBlock">
+    <section class="productListWrap hoz" onclick="location = '/mobile/goods/detail/id/4';">
+        <a class="productList">
+            <img src="/public/uploads/cache/images/osc1/4/1-200x200.jpg" style="height: 199px;">
+            <section>
+                <title class="title">艺创 青花甜白功夫茶具陶瓷配件 茶叶过滤网隔茶渣网</title>
+                <span class="prices">¥30.00</span>
+            </section>
+        </a>
+    </section>
+
+    <section class="productListWrap hoz" onclick="location = '/mobile/goods/detail/id/8';">
+        <a class="productList">
+            <img src="/public/uploads/cache/images/osc1/8/1-200x200.jpg" style="height: 199px;">
+            <section>
+                <title class="title">青瓷手绘荷花陶瓷茶叶罐 储物罐 瓷罐 收纳罐</title>
+                <span class="prices">¥58.00</span>
+            </section>
+        </a>
+    </section>
+    <section class="productListWrap hoz" onclick="location = '/mobile/goods/detail/id/8';">
+        <a class="productList">
+            <img src="/public/uploads/cache/images/osc1/8/1-200x200.jpg" style="height: 199px;">
+            <section>
+                <title class="title">青瓷手绘荷花陶瓷茶叶罐 储物罐 瓷罐 收纳罐</title>
+                <span class="prices">¥58.00</span>
+            </section>
+        </a>
+    </section>
+    <section class="productListWrap hoz" onclick="location = '/mobile/goods/detail/id/8';">
+        <a class="productList">
+            <img src="/public/uploads/cache/images/osc1/8/1-200x200.jpg" style="height: 199px;">
+            <section>
+                <title class="title">青瓷手绘荷花陶瓷茶叶罐 储物罐 瓷罐 收纳罐</title>
+                <span class="prices">¥58.00</span>
+            </section>
+        </a>
+    </section>
+</div></div>
+
+<div id="list-loading" style="display: none;"><img src="__PUBLIC__/view_res/mobile/images/icon/spinner-g-60.png" width="30"></div>
+{/block}
+
+{block name="footer"}
+{include file="public/footer-nav" /}
+{/block}
+
+{block name="script"}
+<script data-main="__RES__/mobile/js/search.js" src="__RES__/mobile/js/require.min.js"></script>
+{/block}
