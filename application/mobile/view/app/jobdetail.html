@@ -1,0 +1,77 @@
+{extend name="public:base" /}
+{block name="jquery"}{/block}  
+{block name="head"}
+<link href="__PUBLIC__/view_res/mobile/css/parttimejoblist.css" type="text/css" rel="Stylesheet" />
+<link href="__CSS__/jquery.toast.css" rel="stylesheet" />
+<link href="__CSS__/user/animate.min.css" rel="stylesheet" />
+<script src="__JS__/jquery-2.2.3.min.js"></script>
+<script src="__JS__/bootstrap.min.js"></script>
+<script  src="__JS__/jquery/jquery.toast.js" type="text/javascript" ></script>
+{/block}
+{/block}
+{block name="header"}
+{include file="public/top-nav" /}
+{/block}
+{block name="content"}
+
+<div id="product_list" class="clearfix"><div class="clearfix pdBlock">
+        <section class="productListWrap hoz">
+            <a class="productList">
+                <section class="info">
+                    <input id="job_id" type="hidden" value="{$jobdetail.id}">
+                    <p >Job Name:<label class="title">{$jobdetail.job_name}</label></p>
+                    <p >Salary:<label class="salary">{$jobdetail.salary}</label></p>
+                    <p >Job Place:<label class="address">{$jobdetail.address}</label></p>
+                    <p >Need counts:<label class="counts">{$jobdetail.apply_counts}/{$jobdetail.need_counts}</label></p>
+                    <p >When Need:<label class="date">{$jobdetail.date}</label></p>
+                    <p >Notes :<label class="notes">{$jobdetail.notes}</label></p>
+                    <p class="pulish_time">Publish Time :<label class="time">{$jobdetail.time}</label></p>
+                </section>
+            </a>
+            <div class="apply" id="apply">
+                <a  >申请/Apply</a>
+            </div>
+        </section>
+</div>
+</div>
+<script>
+    $(function(){
+        $('#apply').click(function () {
+            $.post(
+                "{:url('app/jobdetail')}",
+                {id:$('#job_id').val()},
+                function(d){
+                    if(d){
+                        if(d.error){
+                            $.toast({
+                                heading: 'Warning',
+                                text: d.error,
+                                showHideTransition: 'plain',
+                                icon: 'warning'
+                            })
+                        }else if(d.success){
+                            $.toast({
+                                heading: 'Success',
+                                text: d.success,
+                                showHideTransition: 'slide',
+                                icon: 'success'
+                            })
+                            if(d.url){
+                                setTimeout(function (){
+                                    location.href=d.url;
+                                }, 3000);
+                            }
+                        }
+                    }
+                }
+            );
+        })
+    });
+
+</script>
+{/block}
+
+{block name="footer"}
+{include file="public/footer-nav" /}
+{/block}
+

@@ -44,10 +44,7 @@ class App extends MobileBase
                 $this->error('Failed.');
             }
         }
-        $res=Db::name('parttime_job')
-            ->where('is_end',0)
-            ->order('time', 'desc')
-            ->select();
+        $res=Db::name('parttime_job')->where('is_end',0)->order('time', 'desc')->select();
         $data=[];
         $n=0;
         foreach ($res as $val){
@@ -60,12 +57,48 @@ class App extends MobileBase
         return $this->fetch();
     }
 
+    /**
+     * 展示兼职信息
+     * @return mixed
+     */
     function parttimejoblist(){
+        $part_time_joblist=Db::name('parttime_job')->where('is_end',0)->order('time', 'desc')->select();
+        $this->assign('joblist',$part_time_joblist);
         $this->assign('top_title','兼职/Parttime-Job');
         $this->assign('SEO',['title'=>'搜索/Search-'.config('SITE_TITLE')]);
         $this->assign('flag','search');
         return $this->fetch();
+    }
 
+    //兼职详情
+    function jobdetail(){
+        if(request()->isPost()){
+            $job_id=(int)input('post.id');
+
+            if(!Db::name('parttime_job')->where('id',$job_id)->find()){
+                return ['error'=>'产品不存在/Products do not exist'];
+            }
+
+            $uid=user('uid');
+
+            if(!$uid){
+                return ['error'=>'请先登录/Please Log on First! '];
+            }
+
+           return ['success'=>'申请成功/Apply Success', 'url'=>"/mobile/app/parttimejoblist"];
+        }
+        cookie('jump_url',request()->url(true));
+        $job_detail=Db::name('parttime_job')
+            ->where('id',input('param.id'))
+            ->find();
+        if(empty($job_detail)){
+            $this->error('兼职工作不存在！！/Parttime job do not exist!!');
+        }
+        $this->assign('SEO',['title'=>'兼职/Parttime Job-'.config('SITE_TITLE')]);
+        $this->assign('flag','search');
+        $this->assign('top_title',$job_detail['job_name']);
+        $this->assign('jobdetail',$job_detail);
+        return $this->fetch();
     }
 
 }

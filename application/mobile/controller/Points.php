@@ -78,8 +78,9 @@ class Points extends MobileBase
 		$this->assign('points_goods','points');			
         return $this->fetch('goods:detail');
 	}
-	function points_list(){
-		$this->assign('user_info',Db::name('member')->where(array('uid'=>UID))->find());	
+	public function points_list(){
+	    var_dump(Db::name('points')->where(array('uid'=>UID))->select());
+        $this->assign('user_info',Db::name('member')->where(array('uid'=>UID))->find());
 		$this->assign('list',Db::name('points')->where(array('uid'=>UID))->select());		
 		$this->assign('empty',"<span style='margin-left:20px;'>没有数据</span>");
 		$this->assign('top_title','我的积分');
