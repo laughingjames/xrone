@@ -1,11 +1,14 @@
 <?php
 return [
+
     'type'        => 'mysql',
     'dsn'         => '',   
     'hostname'    => '127.0.0.1',  
     'database'    => 'hellohelper',   
     'username'    => 'root',    
     'password'    => 'JhFnZv9TmHhJ',    
+    'password'    => 'root',
+
     'hostport'    => '3306',    
     'params'      => [],   
     'charset'     => 'utf8',    
