@@ -23,98 +23,159 @@ class ParttimejobBackend extends AdminBase{
 		$this->assign('breadcrumb2','兼职管理');
 	}
 	
-     public function index(){     	
-
+     public function index(){
 		$param=input('param.');
-
 		$query=[];
-
-		if(isset($param['user_name'])){
-			$map['m.username|m.nickname']=['like',"%".$param['user_name']."%"];
-			$query['m.username']=urlencode($param['user_name']);
+		if(isset($param['job_name'])){
+			$map['p.job_name']=['like',"%".$param['job_name']."%"];
+			$query['p.job_name']=urlencode($param['job_name']);
 		}else{
 			$map['m.uid']=['gt',0];
 		}
 
          $list=[];
+         $list= Db::name('apply_job')
+             ->alias('a')
+             ->join('member m','a.uid = m.uid')
+             ->join('parttime_job p','a.job_id = p.id')
+             ->where($map)
+             ->paginate(config('page_num'));
+//        echo  json_encode($list);
+//         exit();
+         	$this->assign('list',$list);
+            $this->assign('empty','<tr><td colspan="20">没有数据~</td></tr>');
+            return $this->fetch();
 
-		$list=Db::name('apply_job')->alias('m')->field('m.*,mag.title')
-		->join('member_auth_group mag','m.groupid = mag.id')
-		->where($map)->order('m.uid desc')->paginate(config('page_num'),false,$query);
+     }
 
-		$this->assign('list',$list);
+    /**
+     * 更新兼职状态
+     */
+    public function update_status($aid,$value){
 
-		$this->assign('empty','<tr><td colspan="20">没有数据~</td></tr>');
+        $res=Db::name('apply_job')
+            ->where('aid',$aid)
+            ->update(['status'=>$value]);
 
-    	return $this->fetch();
-	 }
-	 public function add(){
-	 	
-		if(request()->isPost()){
-			$date=input('post.');
-			$result = $this->validate($date,'Member');			
-			if($result!==true){
-			
-				return ['error'=>$result];
-			}
-			$member['username']=$date['username'];
-			$member['password']=think_ucenter_encrypt($date['password'],config('PWD_KEY'));
-			$member['regdate']=time();
-			$member['reg_type']='pc';
-			$member['email']=$date['email'];
-			$member['telephone']=$date['telephone'];
-			$member['groupid']=$date['groupid'];
-			
-			$uid=Db::name('member')->insert($member,false,true);
-			
-			if($uid){
-				
-				Db::name('member_auth_group_access')->insert(['uid'=>$uid,'group_id'=>$date['groupid']]);
-				
-				storage_user_action(UID,session('user_auth.username'),config('BACKEND_USER'),'新增了会员');
-			
-				return ['success'=>'新增成功','action'=>'add'];
-			}else{
-				return ['error'=>'新增失败'];
-				
-			}
-			
-		}
-		$this->assign('group',Db::name('member_auth_group')->field('id,title')->select());
-		$this->assign('crumbs','新增');
-	 	return $this->fetch();
-	 }
- 	 public function edit(){
-	 	
-		if(request()->isPost()){
-		
-			$date=input('post.');			
-			$member['password']=think_ucenter_encrypt($date['password'],config('PWD_KEY'));			
-			$member['email']=$date['email'];
-			$member['checked']=$date['checked'];
-			$member['telephone']=$date['telephone'];
-			$member['groupid']=$date['groupid'];
-			
-			if(Db::name('member')->where('uid',$date['uid'])->update($member)){
-				
-				Db::name('member_auth_group_access')->where('uid',$date['uid'])->update(['group_id'=>$date['groupid']]);
-				
-				storage_user_action(UID,session('user_auth.username'),config('BACKEND_USER'),'编辑了会员');
-				$this->success('编辑成功',url('MemberBackend/index'));
-			}else{
-				$this->error('编辑失败');
-			}
-		}
-		
-		$list=[
-			'info'=>Db::name('member')->find(input('param.id')),
-			'address'=>Db::name('address')->where('uid',input('param.id'))->select()
-		];
-		$this->assign('data',$list);
-		$this->assign('group',Db::name('member_auth_group')->field('id,title')->select());
-		$this->assign('crumbs','会员资料');
-	 	return $this->fetch('info');
-	 }
- 
+        $returnStatus="";
+        switch($value) {
+            case'0':
+                $returnStatus = "已申请";
+                break;
+            case'1':
+                $returnStatus = "完成";
+                break;
+            case'2':
+                $returnStatus = "申请未去";
+                break;
+            case'3':
+                $returnStatus = "超额人员";
+                break;
+        }
+
+        if(!empty($res)){
+            echo $returnStatus;
+        }else{
+            echo "Faied";
+        }
+
+    }
+
+
+
+
+
+	 /**
+      * 工作信息界面
+      */
+	 public function jobmanage(){
+         $param=input('param.');
+         $query=[];
+         if(isset($param['job_name'])){
+             $map['p.job_name']=['like',"%".$param['job_name']."%"];
+             $query['p.job_name']=urlencode($param['job_name']);
+         }else{
+             $map['p.id']=['gt',0];
+         }
+
+         $list=[];
+         $list= Db::name('parttime_job')
+             ->alias('p')
+             ->where($map)
+             ->paginate(config('page_num'));
+
+         $this->assign('list',$list);
+         $this->assign('empty','<tr><td colspan="20">没有数据~</td></tr>');
+         return $this->fetch();
+     }
+
+    /**
+     * 编辑工作信息
+     * @return mixed
+     */
+    public function edit_job_info(){
+
+        if(request()->isPost()){
+
+            $data=input('post.');
+            $parttimejob['detail']=$data['detail'];
+            $parttimejob['job_name']=$data['job_name'];
+            $parttimejob['salary']=$data['salary'];
+            $parttimejob['address']=$data['address'];
+            $parttimejob['need_counts']=$data['need_counts'];
+            $parttimejob['notes']=$data['notes'];
+            $parttimejob['is_end']=$data['is_end'];
+
+            if(Db::name('parttime_job')->where('id',$data['id'])->update($parttimejob)){
+
+//                Db::name('parttime_job')->where('id',$data['id'])->update(['group_id'=>$date['groupid']]);
+
+                storage_user_action(UID,session('user_auth.username'),config('BACKEND_USER'),'编辑了兼职信息');
+                $this->success('编辑成功',url('ParttimejobBackend/jobmanage'));
+            }else{
+                $this->error('编辑失败');
+            }
+        }
+
+        $list=[
+            'info'=>Db::name('parttime_job')->where('id',input('param.id'))->find(),
+        ];
+
+        $this->assign('data',$list);
+        $this->assign('crumbs','兼职信息修改');
+        return $this->fetch('jobinfo');
+    }
+    /**
+     * 添加兼职信息
+     * @return array|mixed
+     */
+    public function add(){
+        if(request()->isPost()){
+            $data=input('post.');
+            $parttimejob['job_name']=$data['job_name'];
+            $parttimejob['salary']=$data['salary'];
+            $parttimejob['need_counts']=$data['need_counts'];
+            $parttimejob['address']=$data['address'];
+            $parttimejob['date']=$data['date'];
+            $parttimejob['detail']=$data['detail'];
+            $parttimejob['notes']=$data['notes'];
+
+            $uid=Db::name('parttime_job')->insert($parttimejob,false,true);
+
+            if($uid){
+                storage_user_action(UID,session('user_auth.username'),config('BACKEND_USER'),'添加了新的兼职：'.$data['job_name']);
+                return ['success'=>'新增成功',url('ParttimejobBackend/jobmanage')];
+            }else{
+                return ['error'=>'新增失败'];
+
+            }
+
+        }
+
+        $this->assign('group',Db::name('member_auth_group')->field('id,title')->select());
+        $this->assign('crumbs','新增兼职');
+        return $this->fetch();
+    }
+
 }
 ?>

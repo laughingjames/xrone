@@ -1,4 +1,5 @@
 # scrutinizer-ci.com configuration
+
 imports:
     - javascript
     - php

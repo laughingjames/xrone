@@ -1,0 +1,115 @@
+{extend name="./application/admin/view/public/base.html" /}
+{block name="content"}
+<div class="page-header">
+		<h1>
+			{$breadcrumb2}
+			<small>
+				<i class="ace-icon fa fa-angle-double-right"></i>
+				{$crumbs}
+			</small>
+		</h1>
+</div>	
+	<ul class="nav nav-tabs">
+		
+	  <li class="active"><a href="#tab-member" data-toggle="tab">兼职信息</a></li>
+
+	  
+	</ul>
+
+	<form class="form-horizontal" id="validation-form"  method="post" action='{:url("ParttimejobBackend/edit_job_info")}'>
+	<div class="tab-content">
+		<input name="id" type="hidden" value="{$data.info.id}" />
+
+		<div class="tab-pane active" id="tab-member">
+			<table class="table table-binfoed">
+				<tr>
+				    <td>ID</td>
+				    <td>{$data.info.id}</td>
+				</tr>
+	
+				<tr>
+					<td>工作名</td>
+					<td>
+						<input name="job_name" type="text" style="width:400px;" value="{$data.info.job_name|default=''}" />
+					</td>
+				</tr>
+				<tr>
+					<td>工资</td>
+					<td>
+						<input name="salary" type="text" style="width:400px;" value="{$data.info.salary|default=''}" />
+					</td>
+				</tr>
+				<tr>
+				    <td>地址</td>
+				    <td>
+						<input name="address" type="text" style="width:400px;" value="{$data.info.address|default=''}" />
+					</td>
+				</tr>
+				<tr>
+				    <td>工作时间</td>
+				    <td><input name="date" type="text" style="width:400px;" value="{$data.info.date|default=''}" /></td>
+
+				</tr>
+
+
+				<tr>
+					<td>人数</td>
+					<td>
+						<input name="need_counts" type="text" style="width:50px;" value="{$data.info.need_counts|default=''}" />
+					</td>
+				</tr>
+
+				<tr>
+					<td>状态</td>
+					<td>
+						<label class="radio-inline">
+						{if condition="$data['info']['is_end'] EQ '0'"}
+							<input type="radio" checked="checked" value="1" name="is_end">正常</label>
+							<label class="radio-inline">
+							<input type="radio" value="0" name="is_end">已经停止</label>
+						{else/}
+							<input type="radio"  value="1" name="is_end">正常</label>
+							<label class="radio-inline">
+							<input type="radio" checked="checked" value="0" name="is_end">已经停止</label>
+						{/if}
+
+
+					</td>
+				</tr>
+				<tr>
+					<td>详细介绍</td>
+					<td>
+						<textarea name="detail" type="text" style="width:400px; height: 100px" value="">{$data.info.detail|default=''}</textarea>
+					</td>
+				</tr>
+				<tr>
+					<td>备注</td>
+					<td>
+						<textarea name="notes" type="text" style="width:400px; height: 100px" value="">{$data.info.notes|default=''}</textarea>
+					</td>
+				</tr>
+				</table>
+				<div class="form-group">
+				
+				<div style="margin-left:20px;">
+					<input name="send" type="submit" value="提交" class="btn btn-primary" />
+				</div>
+			</div>
+		</div>
+		
+
+	
+	</div>
+	</form>	
+	
+{/block}
+{block name="javascript"}
+
+<script>
+$(function(){	
+	
+
+
+});
+</script>							
+{/block}

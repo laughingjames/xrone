@@ -12,7 +12,7 @@
 </div>
 
 <div class="page-header">	
-	<a href="{:url('ParttimejobBackend/jobmanage')}" class="btn btn-primary">兼职工作信息管理</a>
+	<a href="{:url('ParttimejobBackend/add')}" class="btn btn-primary">新增</a>
 </div>		
 <table class="table table-striped table-bordered table-hover search-form">
 	<thead>
@@ -20,7 +20,7 @@
 		<th><input name="job_name" type="text" placeholder="输入工作名" value="{:input('param.job_name')}" /></th>
 		
 		<th>
-			<a class="btn btn-primary" href="javascript:;" id="search" url="{:url('ParttimejobBackend/index')}">查询</a>
+			<a class="btn btn-primary" href="javascript:;" id="search" url="{:url('ParttimejobBackend/jobmanage')}">查询</a>
 		</th>
 	</thead>
 </table>	
@@ -32,65 +32,52 @@
 				<thead>
 					<tr>											
 						<th>ID</th>
-						<th>头像</th>
-						<th>用户名</th>
-						<th>性别</th>
-						<th>电话号码</th>
-						<th>国家</th>
-						<th>专业</th>
-						<th>兴趣</th>
-						<th>邮箱</th>
-						<th>护照号</th>
 						<th>工作名</th>
+						<th>工资</th>
+						<th>地址</th>
+						<th>人数</th>
+						<th>工作时间</th>
+						<th>详细介绍</th>
+						<th>备注</th>
+						<th>发布时间</th>
 						<th>状态</th>
+						<th>操作</th>
+
 					</tr>
 				</thead>
 				<tbody>
 						{volist name="list" id="v" empty="$empty"}
 						<tr>						
-							<td>{$v.aid}</td>
-							<td><img src="__IMG__/user/{$v.userpic}" width="50" height="50"/></td>
-							<td>
-								{if condition="$v['reg_type'] NEQ 'weixin'"}
-									{$v.username}
-								{else/}
-									{$v.nickname}
-								{/if}
-							</td>
-							<td>
-								{if condition="$v.sex EQ 0"}
-									男
-								{else/}
-									女
-								{/if}
-							</td>
-							<td>{$v.telephone}</td>
-							<td>{$v.country}</td>
-							<td>{$v.major}</td>
-							<td>{$v.interest}</td>
-							<td>{$v.email}</td>
-							<td>{$v.passport_no}</td>
+							<td>{$v.id}</td>
 							<td>{$v.job_name}</td>
-
-							<td  aid="{$v.aid}"  class="status">
-								{switch name="$v.status" }
-								{case value="0" break="0或1"}<label style="color: black">已申请</label>{/case}
-								{case value="1"}<label style="color: green">完成</label>{/case}
-								{case value="2"}<label style="color: red">申请未去</label>{/case}
-								{case value="3"}<label style="color: darkred">超额人员</label>{/case}
-								{default /}默认
-								{/switch}
+							<td>{$v.salary}</td>
+							<td>{$v.address}</td>
+							<td>
+								<a style="color: #0a8ddf">
+									{$v.apply_counts}/{$v.need_counts}
+								</a>
 
 							</td>
 
+							<td>{$v.date}</td>
+							<td width="20%">{$v.detail}</td>
+							<td width="30%">{$v.notes}</td>
 
+							<td>{$v.time}</td>
+							<td>
+								{if condition="$v['is_end'] EQ '0'"}
+									正常
+								{else/}
+									停止
+								{/if}
+							</td>
 
+							<td >
+								<a  class="btn btn-xs btn-info" href='{:url("ParttimejobBackend/edit_job_info",array("id"=>$v["id"]))}'>
+									<i class="fa fa-edit bigger-120"></i>
+								</a>
+							</td>
 
-							<!--<td>-->
-								<!--<a  class="btn btn-xs btn-info" href='{:url("MemberBackend/edit",array("id"=>$v["uid"]))}'>-->
-									<!--<i class="fa fa-edit bigger-120"></i>-->
-								<!--</a> -->
-							<!--</td>-->
 						</tr>
 						{/volist}	
 						
@@ -120,7 +107,8 @@ $(function(){
         data: {'0':'已申请','1':'完成','2':'申请未去','3':'超额人员'},
         submitdata:function(value, settings) {
             return{
-                aid: $(this).attr('aid'),
+                id: $(this).attr('aid'),
+
             };
         },
     });
