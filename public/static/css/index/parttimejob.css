@@ -1,0 +1,32 @@
+.header{
+    position: relative;
+    background: #45c0f8;
+    text-align: left;
+    font-size: 35px;
+    padding: .42rem 0;
+    color: #fff;
+
+}
+.header .user,
+.header .back{
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    height: 40px;
+    line-height: 1.6rem;
+    color: #fff;
+}
+.icon-left{
+    font-size:0.55rem;
+
+}
+.iconfont{
+    font-size: .45rem;
+    color: #DEDCDC;
+}
+.iconfont{
+    font-size: .65rem;
+}
+.backhref{
+    color: white;
+}

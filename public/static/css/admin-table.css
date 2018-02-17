@@ -1,0 +1,47 @@
+
+table.altrowstable {
+    font-family: verdana,arial,sans-serif;
+    font-size:11px;
+    color:#333333;
+    border-width: 1px;
+    border-color: #a9c6c9;
+    border-collapse: collapse;
+}
+/*table.altrowstable th {*/
+    /*border-width: 1px;*/
+    /*padding: 8px;*/
+    /*border-style: solid;*/
+    /*border-color: #a9c6c9;*/
+/*}*/
+/*table.altrowstable td {*/
+    /*border-width: 1px;*/
+    /*padding: 8px;*/
+    /*border-style: solid;*/
+    /*border-color: #a9c6c9;*/
+/*}*/
+.oddrowcolor{
+    background-color:#d4e3e5;
+}
+.evenrowcolor{
+    background-color:#c3dde0;
+}
+/*@-webkit-keyframes greenPulse {*/
+    /*from { background-color: #749a02; -webkit-box-shadow: 0 0 9px #333; }*/
+    /*50% { background-color: #91bd09; -webkit-box-shadow: 0 0 18px #91bd09; }*/
+    /*to { background-color: #749a02; -webkit-box-shadow: 0 0 9px #333; }*/
+/*}*/
+/*.btn {*/
+    /*-webkit-animation-name: greenPulse;*/
+    /*-webkit-animation-duration: 2s;*/
+    /*-webkit-animation-iteration-count: infinite;*/
+/*}*/
+/*@-webkit-keyframes redPulse {*/
+    /*from { background-color: #749a02; -webkit-box-shadow: 0 0 9px #333; }*/
+    /*50% { background-color: #91bd09; -webkit-box-shadow: 0 0 18px #91bd09; }*/
+    /*to { background-color: #749a02; -webkit-box-shadow: 0 0 9px #333; }*/
+/*}*/
+.alter {
+    -webkit-animation-name: redPulse;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-iteration-count: infinite;
+}

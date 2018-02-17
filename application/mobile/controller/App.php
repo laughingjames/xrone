@@ -28,9 +28,10 @@ class App extends MobileBase
 
     //兼职详情
     function jobdetail(){
-        cookie('jump_url',request()->url(true));
+
         if(request()->isPost()){
             $job_id=(int)input('post.id');
+            cookie('jump_url',request()->url(true).'/id/'.$job_id);
             $job_name=Db::name('parttime_job')->field('job_name')->where('id',$job_id)->find()['job_name'];
             if(empty($job_name)){
                 return ['error'=>'兼职工作不存在！！/Parttime job do not exist!!'];
