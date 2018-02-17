@@ -1,13 +1,12 @@
 <?php
 return [
-
     'type'        => 'mysql',
     'dsn'         => '',   
     'hostname'    => '127.0.0.1',  
     'database'    => 'hellohelper',   
     'username'    => 'root',    
     'password'    => 'root',
-    'hostport'    => '3306',    
+    'hostport'    => '3306',
     'params'      => [],   
     'charset'     => 'utf8',    
     'prefix'      => 'osc_',
