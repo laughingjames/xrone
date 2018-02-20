@@ -22,7 +22,19 @@
     <div id="plistDp"></div>
 </div>
 
-<div id="product_list" class="clearfix"></div>
+<div id="product_list" class="clearfix">
+    {volist name="houselist" id="v"}
+    <section class="productListWrap hoz" onclick=" location = '{:url("app/housedetail",array("id"=>$v["id"]))}';">
+        <a class="productList">
+            <img src="IMG_ROOT{$v.image|resize=300,300}" >
+            <section>
+                <title class="title">{$v.title}</title>
+                <span class="prices">¥{$v.price}</span>
+            </section>
+        </a>
+    </section>
+    {/volist}
+</div>
 
 <div id="list-loading" style="display: none;"><img src="__PUBLIC__/view_res/mobile/images/icon/spinner-g-60.png" width="30"></div>
 {/block}

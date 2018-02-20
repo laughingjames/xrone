@@ -67,10 +67,24 @@ class App extends MobileBase
      * @return mixed
      */
     public function house_renting(){
+        $list=[];
+        $list= Db::name('house_renting')
+            ->paginate(config('page_num'));
 
         $this->assign('top_title','租房/HouseRenting');
         $this->assign('SEO',['title'=>'租房/HouseRenting-'.config('SITE_TITLE')]);
         $this->assign('flag','search');
+        $this->assign('houselist',$list);
+
         return $this->fetch();
+    }
+    //兼职详情
+    function housedetail(){
+        $house_detail=Db::name('house_renting')->where('id',input('param.id'))->find();
+        if(empty($house_detail)){
+            $this->error('房屋信息不存在！！/House renting info do not exist!!');
+        }
+        dump($house_detail);exit();
+
     }
 }

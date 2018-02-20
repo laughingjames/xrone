@@ -53,16 +53,16 @@ class HouserentingBackend extends AdminBase
             $houseinfo['detail']=$data['detail'];
             $houseinfo['address']=$data['address'];
 
-            $goods_id=Db::name('house_renting')->insert($houseinfo);
+            $house_id=Db::name('house_renting')->insertGetId($houseinfo);
 
             if (isset($data['mobile_image'])){
                 foreach ($data['mobile_image'] as $mobile_image) {
-                    Db::execute("INSERT INTO " . config('database.prefix'). "goods_mobile_description_image SET goods_id =" . (int)$goods_id . ", image = '" . $mobile_image['image']."', description = '" . $mobile_image['description'] .  "', sort_order =" . (int)$mobile_image['sort_order']);
+                    Db::execute("INSERT INTO " . config('database.prefix'). "house_renting_description_image SET house_id =" . (int)$house_id . ", image = '" . $mobile_image['image']."', description = '" . $mobile_image['description'] .  "', sort_order =" . (int)$mobile_image['sort_order']);
                 }
             }
-            if($goods_id){
+            if($house_id){
 
-                storage_user_action(UID,session('user_auth.username'),config('BACKEND_USER'),'新增了商品');
+                storage_user_action(UID,session('user_auth.username'),config('BACKEND_USER'),'新增了房屋信息：标题: '.$houseinfo['title'].' 价格: ¥'.$houseinfo['price']);
 
                 $this->success('新增成功！',url('HouserentingBackend/index'));
             }else{
@@ -87,7 +87,7 @@ class HouserentingBackend extends AdminBase
         }
         $update['id']=(int)$data['id'];
         $update['status']=(int)$data['status'];
-        $status= $update['status']===0?'停用':'使用';
+        $status= $update['status']===0?'使用':'停用';
         if(Db::name('house_renting')->update($update)){
             storage_user_action(UID,session('user_auth.username'),config('BACKEND_USER'),'更新房屋'.$data['title'].'状态为:'.$status);
             $this->redirect('HouserentingBackend/index');
@@ -101,7 +101,7 @@ class HouserentingBackend extends AdminBase
             $this->redirect('HouserentingBackend/index');
         }
         $update['id']=(int)$data['id'];
-        $update['price']=(float)$data['price'];
+        $update['price']=$data['price'];
         if(Db::name('house_renting')->update($update)){
             storage_user_action(UID,session('user_auth.username'),config('BACKEND_USER'),'更新房屋'.$data['title'].'商品价格为:'.$data['price']);
             return true;
@@ -131,8 +131,11 @@ class HouserentingBackend extends AdminBase
     }
     //房屋多图
     public function edit_mobile(){
-        $this->assign('mobile_images',Db::name('goods_mobile_description_image')->where('goods_id',input('id'))->order('sort_order asc')->select());
+        $house_images=Db::name('house_renting_description_image')->where('house_id',input('id'))->order('sort_order asc')->select();
+
+        $this->assign('mobile_images',$house_images);
         $this->assign('crumbs', '房屋多图');
+
         return $this->fetch();
     }
     //删除房屋信息
@@ -147,6 +150,91 @@ class HouserentingBackend extends AdminBase
 
             return $this->error('删除失败！',url('Goods/index'));
         }
+    }
+
+    //编辑信息，新增，修改
+    function ajax_eidt(){
+        if(request()->isPost()){
+            $data=input('post.');
+
+            $table_name=$data['table'];
+            if(isset($data[$table_name][$data['key']])){
+                $info=$data[$table_name][$data['key']];
+            }
+
+            if(isset($data['id'])&&$data['id']!=''){
+                //更新
+                $info['id']=(int)$data['id'];
+
+                $r=Db::name($table_name)->update($info,false,true);
+                if($r){
+                    storage_user_action(UID,session('user_auth.username'),config('BACKEND_USER'),'更新房子多图信息，房子ID为： '.$data['id']);
+                    return ['success'=>'更新成功'];
+                }else{
+                    return ['error'=>'更新失败'];
+                }
+            }else{
+                //新增
+                $info['house_id']=(int)$data['house_id'];
+                $r=Db::name($table_name)->insert($info,false,true);
+                if($r){
+                    storage_user_action(UID,session('user_auth.username'),config('BACKEND_USER'),'更新房屋信息（新增图片）,房屋ID为： '.$data['id']);
+                    return ['success'=>'更新成功','id'=>$r];
+                }else{
+                    return ['error'=>'更新失败'];
+                }
+            }
+        }else{
+            $data=input('get.');
+
+            $table_name=$data['table'];
+            if(isset($data[$table_name][$data['key']])){
+                $info=$data[$table_name][$data['key']];
+            }
+
+            if(isset($data['id'])&&$data['id']!=''){
+                //更新
+                $info['id']=(int)$data['id'];
+
+                $r=Db::name($table_name)->update($info,false,true);
+                if($r){
+                    storage_user_action(UID,session('user_auth.username'),config('BACKEND_USER'),'更新房子多图信息，房子ID为： '.$data['id']);
+                    return ['success'=>'更新成功'];
+                }else{
+                    return ['error'=>'更新失败'];
+                }
+            }else{
+                //新增
+                $info['house_id']=(int)$data['house_id'];
+
+                $r=Db::name($table_name)->insert($info,false,true);
+                if($r){
+                    storage_user_action(UID,session('user_auth.username'),config('BACKEND_USER'),'更新房屋信息（新增图片）,房屋ID为： '.$data['id']);
+                    return ['success'=>'更新成功','id'=>$r];
+                }else{
+                    return ['error'=>'更新失败'];
+                }
+            }
+        }
 
     }
+    //用于编辑中删除
+    function ajax_del(){
+        if(request()->isPost()){
+            $data=input('post.');
+
+            if(empty($data['id'])){
+                return ['success'=>'删除成功'];
+            }
+
+            $r=Db::name($data['table'])->delete($data['id']);
+
+            if($r){
+                return ['success'=>'删除成功'];
+            }else{
+                return ['error'=>'删除失败'];
+            }
+        }
+    }
+
 }
