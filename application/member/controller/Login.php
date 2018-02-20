@@ -4,7 +4,7 @@
  *会员登录注册相关
  */
 namespace app\member\controller;
-use oappsc\common\controller\Base;
+use app\common\controller\Base;
 use app\common\validate\Member;
 use think\Db;
 use think\captcha\Captcha;

@@ -102,6 +102,8 @@ class Attribute extends AdminBase{
 		storage_user_action(UID,session('user_auth.username'),config('BACKEND_USER'),'删除了属性');		
 		$this->redirect('Attribute/index');	
 	}
+
+
 	//用于自动完成
 	public function autocomplete(){
 				

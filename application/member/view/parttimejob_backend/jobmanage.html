@@ -42,7 +42,6 @@
 						<th>发布时间</th>
 						<th>状态</th>
 						<th>操作</th>
-
 					</tr>
 				</thead>
 				<tbody>
@@ -56,13 +55,10 @@
 								<a style="color: #0a8ddf">
 									{$v.apply_counts}/{$v.need_counts}
 								</a>
-
 							</td>
-
 							<td>{$v.date}</td>
 							<td width="20%">{$v.detail}</td>
 							<td width="30%">{$v.notes}</td>
-
 							<td>{$v.time}</td>
 							<td>
 								{if condition="$v['is_end'] EQ '0'"}
@@ -71,21 +67,17 @@
 									停止
 								{/if}
 							</td>
-
 							<td >
 								<a  class="btn btn-xs btn-info" href='{:url("ParttimejobBackend/edit_job_info",array("id"=>$v["id"]))}'>
 									<i class="fa fa-edit bigger-120"></i>
 								</a>
 							</td>
-
 						</tr>
-						{/volist}	
-						
+						{/volist}
 						<tr>
 							<td colspan="20" class="page">{$list->render()}</td>
 						</tr>
 				</tbody>
-				
 			</table>
 		</div>
 	</div>
@@ -94,9 +86,7 @@
 {block name="javascript"}
 <script src="__JS__/jquery.jeditable.mini.js"></script>
 <script>
-
 $(function(){
-
     $(".status").editable("update_status", {
         event:'dblclick',
         tooltip:'双击编辑...',
@@ -108,11 +98,9 @@ $(function(){
         submitdata:function(value, settings) {
             return{
                 id: $(this).attr('aid'),
-
             };
         },
     });
-
 
    $("#search").click(function () {
         var url = $(this).attr('url');

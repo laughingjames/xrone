@@ -33,9 +33,7 @@ class Goods extends AdminBase{
 		}		
 
 		$this->assign('empty','<tr><td colspan="20">没有数据~</td></tr>');
-		
 		$this->assign('category',osc_goods()->get_category_tree());
-		
 		$this->assign('list',$list);
 	
 		return $this->fetch();
@@ -45,29 +43,29 @@ class Goods extends AdminBase{
 	 public function add(){
 		
 		if(request()->isPost()){
-			
+
 			$data=input('post.');
-			
-			$model=osc_model('admin','goods');  	
-			
-			$error=$model->validate($data);	
-	
-			if($error){					
-				$this->error($error['error']);	
+
+			$model=osc_model('admin','goods');
+
+			$error=$model->validate($data);
+
+			if($error){
+				$this->error($error['error']);
 			}
-			
-			$return=$model->add_goods($data);		
-			
+
+			$return=$model->add_goods($data);
+
 			if($return){
-												
-				storage_user_action(UID,session('user_auth.username'),config('BACKEND_USER'),'新增了商品');		
-			
-				$this->success('新增成功！',url('Goods/index'));			
+
+				storage_user_action(UID,session('user_auth.username'),config('BACKEND_USER'),'新增了商品');
+
+				$this->success('新增成功！',url('Goods/index'));
 			}else{
-				$this->error('新增失败！');			
-			
+				$this->error('新增失败！');
+
 			}
-			
+
 		}
 		
 		$this->assign('weight_class',Db::name('WeightClass')->select());

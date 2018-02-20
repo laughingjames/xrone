@@ -13,6 +13,7 @@ use think\Db;
 class App extends MobileBase
 {
 
+
     /**
      * 展示兼职信息
      * @return mixed
@@ -60,4 +61,16 @@ class App extends MobileBase
         return $this->fetch();
     }
 
+
+    /**
+     * 展示房源信息
+     * @return mixed
+     */
+    public function house_renting(){
+
+        $this->assign('top_title','租房/HouseRenting');
+        $this->assign('SEO',['title'=>'租房/HouseRenting-'.config('SITE_TITLE')]);
+        $this->assign('flag','search');
+        return $this->fetch();
+    }
 }

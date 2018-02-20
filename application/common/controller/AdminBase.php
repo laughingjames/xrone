@@ -30,14 +30,17 @@ class AdminBase extends Base{
 		config('dispatch_success_tmpl',APP_PATH.'common/view/public/success.tpl');
 		
 		$this->get_menu();
-		
+
+
+
         //权限判断  
         if(session('user_auth.username')!=config('administrator')){//超级管理员不需要验证        
 	        
 			$auth = new \auth\Auth();
-			
+
+
 			if (!$auth->check(request()->module().'/'.to_under_score(request()->controller()).'/'.request()->action(), session('user_auth.uid'))) {
-								
+
 				$this->error('没有权限！');
 			}
 		}
@@ -50,6 +53,7 @@ class AdminBase extends Base{
 		if(session('user_auth.username')!=config('administrator')){
 			$this->assign('admin_menu',$this->get_auth_menu());
 		}else{
+
 			$this->assign('admin_menu',$this->get_admin_menu());
 		}
 
@@ -70,6 +74,8 @@ class AdminBase extends Base{
 
 		$parent_menu=list_to_tree($menu,'id','pid','children',0);
 
+        if(empty($parent_menu))
+            return $menu;
 		return $parent_menu;
 	}
 	
