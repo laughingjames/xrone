@@ -99,7 +99,7 @@ class User extends MobileBase
     }
 
     function wish_list(){
-		
+        $this->assign('flag','user');
 		$this->assign('top_title','我的收藏/My Collection');
 		$this->assign('SEO',['title'=>'我的收藏/My Collection-'.config('SITE_TITLE')]);
 		return $this->fetch();

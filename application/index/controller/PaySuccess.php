@@ -14,10 +14,12 @@
  
 namespace app\index\controller;
 use app\common\controller\HomeBase;
-class Index extends HomeBase
+class PaySuccess extends HomeBase
 {
-    public function index()
-    {    			
+    public function pay_success()
+    {    	
+		
+		
 		return $this->fetch();
    
     }

@@ -22,9 +22,12 @@ class HouserentingBackend extends AdminBase
     public function index(){
         $param=input('param.');
         $query=[];
-        if(isset($param['job_name'])){
-            $map['p.job_name']=['like',"%".$param['job_name']."%"];
-            $query['p.job_name']=urlencode($param['job_name']);
+        if(isset($param['name'])){
+            $map['h.title']=['like',"%".$param['name']."%"];
+            $query['h.name']=urlencode($param['name']);
+            if(isset($param['status'])){
+                $map['h.status']=$param['status'];
+            }
         }else{
             $map['h.id']=['gt',0];
         }
@@ -140,15 +143,18 @@ class HouserentingBackend extends AdminBase
     }
     //删除房屋信息
     function del(){
-        $model=osc_model('admin','goods');
-        $r=$model->del_goods((int)input('param.id'));
+        $house_id=input('param.id');
+        $r=Db::name('house_renting')->where('id',$house_id)->delete();
+        Db::name('house_renting_description_image')->where('house_id',$house_id)->delete();
+
+
         if($r){
-            storage_user_action(UID,session('user_auth.username'),config('BACKEND_USER'),'删除商品'.input('get.id'));
-            $this->redirect('Goods/index');
+            storage_user_action(UID,session('user_auth.username'),config('BACKEND_USER'),'删除房屋信息'.input('get.id'));
+            $this->redirect('HouserentingBackend/index');
 
         }else{
 
-            return $this->error('删除失败！',url('Goods/index'));
+            return $this->error('删除失败！',url('HouserentingBackend/index'));
         }
     }
 
@@ -236,5 +242,33 @@ class HouserentingBackend extends AdminBase
             }
         }
     }
+
+
+
+    public function house_apply_manage(){
+        $param=input('param.');
+        $query=[];
+        if(isset($param['title'])){
+            $map['h.title']=['like',"%".$param['title']."%"];
+            $query['h.title']=urlencode($param['title']);
+        }else{
+            $map['m.uid']=['gt',0];
+        }
+
+        $list=[];
+        $list= Db::name('apply_house')
+            ->alias('a')
+            ->join('member m','a.uid = m.uid')
+            ->join('house_renting h','a.hid = h.id')
+            ->where($map)
+            ->paginate(config('page_num'));
+        $this->assign('list',$list);
+        $this->assign('empty','<tr><td colspan="20">没有数据~</td></tr>');
+        return $this->fetch();
+    }
+
+
+
+
 
 }

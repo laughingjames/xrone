@@ -83,8 +83,6 @@ class ParttimejobBackend extends AdminBase{
 
 
 
-
-
 	 /**
       * 工作信息界面
       */
@@ -177,5 +175,10 @@ class ParttimejobBackend extends AdminBase{
         return $this->fetch();
     }
 
+
+
+    public function house_apply(){
+
+    }
 }
 ?>
