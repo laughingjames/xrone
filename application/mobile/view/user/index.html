@@ -37,7 +37,7 @@
 
 <div class='uc-order-sec clearfix'>
     <a class='uc-order-btn fukuan' href="{:url('order/index',array('status'=>config('default_order_status_id')))}"><i></i>待付款/Pending payment<b class='prices'>{$no_pay|default='0'}</b></a>
-    <a class='uc-order-btn fahuo' href="{:url('order/index',array('status'=>config('paid_order_status_id')))}"><i></i>待发货/Pending delivery<b class='prices'>{$paid|default='0'}</b></a>
+    <a class='uc-order-btn fahuo' href="{:url('order/index',array('status'=>config('paid_order_status_id')))}"><i></i>待收货/Waiting Received<b class='prices'>{$paid|default='0'}</b></a>
 </div>
 <div class="uc-section" onclick="location.href = '{:url("user/userinfo")}';">
 <i class='info'></i><b>我的个人信息</b>个人信息/Personal information

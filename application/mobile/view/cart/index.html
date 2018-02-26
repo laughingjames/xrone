@@ -156,11 +156,11 @@
 		{if condition="!isset($points)"}
 			{if condition="in_wechat()"}
 	        	<div class="weui_btn_area">
-				   <a class="weui_btn weui_btn_primary payment" id="wechat-payment-btn">微信安全支付</a>
+				   <a class="weui_btn weui_btn_primary payment" id="wechat-payment-btn">微信支付/Wechat Wallet</a>
 				</div>
 	       {else/}
 	       		<div class="weui_btn_area">
-				   <a class="weui_btn weui_btn_primary payment" id="alipay-payment-btn">支付宝支付</a>
+				   <a class="weui_btn weui_btn_primary payment" id="alipay-payment-btn">支付宝支付/Alipay</a>
 				</div>
 	       {/if}
 	       
@@ -476,7 +476,7 @@ $('#alipay-payment-btn').click(function(){
 			address_id:address_id
 		},
 		function(d){
-			
+			console.log(d);
 			if(d.error){
 				$.toast(d.error, "forbidden");
 			}

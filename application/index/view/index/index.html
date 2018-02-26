@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8" />
     <title>HelloHelper</title>
-    <meta name="keywords" content="HelloHelper,温州大学,HelloHelper" />
-    <meta name="description" content="HelloHelper是一款为来华留学生打造的服务网站。" />
+    <meta name="keywords" content={$Think.config.SITE_KEYWORDS} />
+    <meta name="description" content={$Think.config.SITE_DESCRIPTION}  />
     <base targrt="_blank">
     <meta http-equiv="X-UA-Compatible" Content="IE=Edge,chrome=1">
     <!-- <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,minimal-ui" /> -->
@@ -98,7 +98,7 @@
             <div style="text-align: center;margin-top: 150px" class="copyright" align="center">
                 <label style="font-size: 18px;">&copy; Copyright 2017.Company 温州大学0+1工作室
                     <p style="text-align: center;">
-                        <a style="font-size: 18px" target="_blank" href="http://www.miitbeian.gov.cn"> 蜀ICP备16031418号</a> </p></label>
+                        <a style="font-size: 18px" target="_blank" href="http://www.miitbeian.gov.cn"> {$Think.config.SITE_ICP}</a> </p></label>
                 <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1260743211'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1260743211%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
 
             </div>

@@ -1,14 +1,5 @@
 <?php
 /**
- * oscshop2 B2C电子商务系统
- *
- * ==========================================================================
- * @link      http://www.oscshop.cn/
- * @copyright Copyright (c) 2015-2016 oscshop.cn. 
- * @license   http://www.oscshop.cn/license.html License
- * ==========================================================================
- *
- * @author    李梓钿
  *
  */
  
@@ -87,18 +78,18 @@ class Payment extends Base{
 	private function validate_pay($type='money'){
 		
 		$uid=user('uid');
-		
+
 		if(!$uid){
 			return ['error'=>'请先登录/Please Login In.'];
 		}
-		
+
 		$cart=osc_cart();
 		
 		if(!$cart->count_cart_total($uid,$type)) {	
 			return ['error'=>'您的购物车没有商品/Your shop cart is empty.'];
 		}
-		
-		$city_id=input('post.city_id');		
+
+		$city_id=input('post.city_id');
 		
 		$shipping=$cart->has_shipping(user('uid'),$type);
 		//配送验证
@@ -106,16 +97,18 @@ class Payment extends Base{
 //			return ['error'=>$shipping['error']];
 //		}
 //
+
 		//需要配送的
 		if($shipping){
 			if($city_id==''){
+
 				return ['error'=>'请选择收货地址/Please choose the receiving address.'];
 			}
 		}
-		
+
 		// 验证商品数量		
 		$cart_list=Db::name('cart')->where('uid',$uid)->select();
-		
+
 		foreach ($cart_list as $k => $v) {
 			
 			$param['option']=json_decode($v['goods_option'], true);
@@ -133,18 +126,20 @@ class Payment extends Base{
 			}
 			
 		}
+
 		return [
 			'uid'=>$uid,
 			'city_id'=>$city_id,
 			'shipping'=>$shipping
 		];
+
 	}
 	//支付宝支付
 	function alipay_pay(){
 		if(request()->isPost()){
 		
 			$result=$this->validate_pay();
-			
+
 			if(isset($result['error'])){
 				return $result;
 			}
@@ -200,7 +195,65 @@ class Payment extends Base{
 			
 			return ['success'=>1,'type'=>'alipay','url'=>$url];
 			
-		}
+		}else{
+
+            $result=$this->validate_pay();
+
+            if(isset($result['error'])){
+                return $result;
+            }
+
+            $cart=osc_cart();
+
+            //需要配送的
+            if($result['shipping']){
+                $weight = $cart->get_weight($result['uid']);
+                $order['shipping_method']=config('default_transport_id');
+            }else{
+                $weight=0;
+                $order['shipping_method']='';
+            }
+
+            $order['shipping_address_id']=input('get.address_id');
+
+            $order['payment_method']='alipay';
+            $order['weight']=$weight;
+            $order['shipping_city_id']=$result['city_id'];
+            $order['comment']=input('get.comment');
+            $order['uid']=$result['uid'];
+
+            $order=osc_order()->add_order('alipay',$order);
+
+            $this->clear_cart($order['uid']);
+
+            $config=payment_config('alipay');
+
+            $alipay_config = array(
+                "service"       => 'alipay.wap.create.direct.pay.by.user',
+                "partner"       => $config['partner'],
+                "seller_id"     => $config['partner'],
+                "key"			=> $config['key'],
+                "payment_type"	=> 1,
+                "notify_url"	=> request()->domain().url('payment/alipay_notify'),
+                "return_url"	=> request()->domain().url('payment/alipay_return'),
+                "_input_charset"	=> trim(strtolower(strtolower('utf-8'))),
+                "out_trade_no"	=> $order['pay_order_no'],
+                "subject"	=> $order['subject'],
+                "total_fee"	=> $order['pay_total'],
+                "show_url"	=> '',
+                'transport'=>'http',
+                'sign_type'=>strtoupper('MD5'),
+                //"app_pay"	=> "Y",//启用此参数能唤起钱包APP支付宝
+                "body"	=> '',
+            );
+
+
+            $alipay = new \payment\alipay\Alipay($alipay_config,'mobile');
+
+            $url = $alipay->get_payurl();
+
+            return ['success'=>1,'type'=>'alipay','url'=>$url];
+        }
 	}
 	//支付宝异步通知
 	function alipay_notify(){
@@ -238,11 +291,12 @@ class Payment extends Base{
 	}
 	//支付宝同步通知
 	function alipay_return(){
-		
-		$alipay= new \payment\alipay\Alipay(payment_config('alipay'));		
+
+		$alipay= new \payment\alipay\Alipay(payment_config('alipay'));
+
 		//对进入的参数进行远程数据判断
 		$verify = $alipay->return_verify();
-	
+
 		if($verify){
 		
 			$get=input('param.');
@@ -267,7 +321,7 @@ class Payment extends Base{
 			}
 			
 		}else{
-			die('支付失败');
+			die('支付失败/Failure to pay');
 		}
 	}
 	

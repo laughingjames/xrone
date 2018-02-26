@@ -69,6 +69,21 @@ class Order{
 		Db::execute("INSERT INTO " .config('database.prefix'). "order_history SET order_status_id = ".config('cancel_order_status_id').',order_id='.$order_id.",comment='用户取消了订单',date_added=".time());
 		
 	}
+    //确认订单
+    public function order_confirm($order_id,$uid=null){
+
+        if($uid){
+            $map['uid']=['eq',$uid];
+        }
+        $order['order_status_id']=config('complete_order_status_id');
+        $map['order_id']=['eq',$order_id];
+        //设置订单状态
+        Db::name('order')->where($map)->update($order);
+        //写人订单历史
+        Db::execute("INSERT INTO " .config('database.prefix'). "order_history SET order_status_id = ".config('cancel_order_status_id').',order_id='.$order_id.",comment='用户确认了订单',date_added=".time());
+
+    }
+
 	
 	//订单信息
 	public function order_info($order_id,$uid=null){
@@ -142,10 +157,10 @@ class Order{
 	 * @param $order_data 订单数据
 	 * return array
 	 */
-	public function add_order($payment_code,$order_data=array()) {	
-		
+	public function add_order($payment_code,$order_data=array()) {
+
 		$data=$this->get_order_data($order_data);
-		
+
 		$order['uid']=$data['uid'];			
 		$order['order_num_alias']=$data['order_num_alias'];
 		$order['name']=$data['name'];
@@ -256,7 +271,7 @@ class Order{
 	}
 	
 	private function get_order_data($param=array()){
-			
+
 		if(empty($param)){
 			$shipping_address_id=(int)session('shipping_address_id');//送货地址
 			$shipping_method=session('shipping_method');//送货方式
@@ -266,6 +281,7 @@ class Order{
 			$comment=session('comment');//留言
 			$uid=(int)member('uid');
 		}else{
+
 			$shipping_address_id=(int)$param['shipping_address_id'];
 			$shipping_method=$param['shipping_method'];
 			$payment_method=$param['payment_method'];
@@ -273,26 +289,28 @@ class Order{
 			$shipping_city_id=(int)$param['shipping_city_id'];
 			$comment=$param['comment'];
 			$uid=(int)$param['uid'];
-		}	
-		
+		}
+
 		if(isset($param['type'])){
 			$type=$param['type'];
 			$data['pay_type']=$param['type'];
 		}else{
 			$type='money';
 		}
-		
+
 		$goodss = osc_cart()->get_all_goods($uid,$type);
+
 		//付款人
 		$payment=Db::name('member')->find($uid);
+
 		//收货人 
 		$shipping=Db::name('address')->find($shipping_address_id);
 		
 		$data['uid']=$payment['uid'];
 		$data['name']=$payment['username'];
 		$data['email']=$payment['email'];
-		$data['tel']=$payment['telephone'];		
-		
+		$data['tel']=$payment['telephone'];
+
 		//此处为了支持免配送商品
 		$data['shipping_name']=empty($shipping['name'])?'':$shipping['name'];	
 		$data['shipping_tel']=empty($shipping['telephone'])?'':$shipping['telephone'];	

@@ -2,7 +2,7 @@
 {volist name="order" id="orders"}
     <div class="uc-orderitem" id="orderitem{$orders.order.order_id}">
         <div class="uc-seral clearfix">
-            <p class="order_serial">订单号：{$orders.order.order_num_alias}</p>
+            <p class="order_serial">订单号/Order No：{$orders.order.order_num_alias}</p>
 
             <p class="order_status"><?php echo get_order_status_name($orders['order']['order_status_id']); ?></p>
         </div>
@@ -29,7 +29,7 @@
                     
                     <?php if($orders['order']['points_order']==0){ ?>
 			            <span class="price">
-	                    	<span class="dprice">&yen;{$o.price}</span> x 
+	                 	<span class="dprice">&yen;{$o.price}</span> x
 	                    	<span class="dcount">{$o.quantity}</span>
                     	</span>			           
 		           <?php } ?>
@@ -40,22 +40,23 @@
          <div class="uc-summary clearfix" style='padding:8px 7px;text-align:right;'>
          	<?php if($orders['order']['points_order']==0){ ?>
             <div class="sum">
-				总计: <span class="dprice">&yen;{$orders.order.total}</span>
+				总计/Price: <span class="dprice">&yen;{$orders.order.total}</span>
             </div>
            <?php }elseif($orders['order']['points_order']==1){ ?>
            	<div class="sum">
-				积分: <span class="dprice">{$orders.order.pay_points}</span>
+				积分/Points: <span class="dprice">{$orders.order.pay_points}</span>
             </div>
            <?php } ?>
             <?php if($orders['order']['order_status_id']==config('default_order_status_id')){ ?>             
-                <a class="olbtn cancel" href="javascript:;" onclick="cancelOrder({$orders.order.order_id}, this);">取消订单</a>
-                <a class="olbtn wepay wepay_button" href="javascript:;" {if condition="in_wechat()"}  onclick="wxpayOrder({$orders.order.order_id});"{else/}  onclick="alipayOrder({$orders.order.order_id});"{/if} data-id="{$orders.order.order_id}">立即支付</a>         
+                <a class="olbtn cancel" href="javascript:;" onclick="cancelOrder({$orders.order.order_id}, this);">取消/Cancel</a>
+                <a class="olbtn wepay wepay_button" href="javascript:;" {if condition="in_wechat()"}  onclick="wxpayOrder({$orders.order.order_id});"{else/}  onclick="alipayOrder({$orders.order.order_id});"{/if} data-id="{$orders.order.order_id}">支付/Pay</a>
             <?php }elseif($orders['order']['order_status_id']==config('paid_order_status_id')){ ?> 
-                <a class="olbtn wepay" href='{:url("order/order_info",array("order_id"=>$orders["order"]["order_id"]))}'>订单详情</a>
+                <a class="olbtn wepay" href='{:url("order/order_info",array("order_id"=>$orders["order"]["order_id"]))}'>详情/Order Details</a>
+             <a class="olbtn wepay" href="javascript:;" onclick="confirmOrder({$orders.order.order_id}, this);">确认/Confirm Receipt</a>
             <?php }elseif($orders['order']['order_status_id']==config('cancel_order_status_id')){ ?>               
-                <a class="olbtn cancel" href='{:url("order/order_info",array("order_id"=>$orders["order"]["order_id"]))}'>订单详情</a>
+                <a class="olbtn cancel" href='{:url("order/order_info",array("order_id"=>$orders["order"]["order_id"]))}'>详情/Order Details</a>
             <?php }elseif($orders['order']['order_status_id']==config('complete_order_status_id')){ ?>               
-                <a class="olbtn cancel" href='{:url("order/order_info",array("order_id"=>$orders["order"]["order_id"]))}'>订单详情</a>                
+                <a class="olbtn cancel" href='{:url("order/order_info",array("order_id"=>$orders["order"]["order_id"]))}'>详情/Order Details</a>
             <?php } ?>
             
         </div> <!---->
