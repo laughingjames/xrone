@@ -41,7 +41,7 @@ class index extends Controller
         $data['college']=$out[0][2];
         $data['class']=$out[0][3];
 
-        var_dump($data);
+
          return json_encode($data);
 
     }

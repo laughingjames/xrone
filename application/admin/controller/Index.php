@@ -3,7 +3,7 @@ namespace app\admin\controller;
 use app\common\controller\AdminBase;
 use think\Db;
 class Index extends AdminBase{
-	
+
     public function index()
     {
     	//订单数量    
