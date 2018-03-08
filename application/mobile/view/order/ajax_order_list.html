@@ -49,7 +49,9 @@
            <?php } ?>
             <?php if($orders['order']['order_status_id']==config('default_order_status_id')){ ?>             
                 <a class="olbtn cancel" href="javascript:;" onclick="cancelOrder({$orders.order.order_id}, this);">取消/Cancel</a>
-                <a class="olbtn wepay wepay_button" href="javascript:;" {if condition="in_wechat()"}  onclick="wxpayOrder({$orders.order.order_id});"{else/}  onclick="alipayOrder({$orders.order.order_id});"{/if} data-id="{$orders.order.order_id}">支付/Pay</a>
+             <a class="olbtn wepay wepay_button" href="{:url('Cart/goto_broswer')}" {if condition="in_wechat()"}  onclick="wxpayOrder({$orders.order.order_id});"{else/}  onclick="alipayOrder({$orders.order.order_id});"{/if} data-id="{$orders.order.order_id}">支付/Pay</a>
+
+             <!--<a class="olbtn wepay wepay_button" href="javascript:;" {if condition="in_wechat()"}  onclick="wxpayOrder({$orders.order.order_id});"{else/}  onclick="alipayOrder({$orders.order.order_id});"{/if} data-id="{$orders.order.order_id}">支付/Pay</a>-->
             <?php }elseif($orders['order']['order_status_id']==config('paid_order_status_id')){ ?> 
                 <a class="olbtn wepay" href='{:url("order/order_info",array("order_id"=>$orders["order"]["order_id"]))}'>详情/Order Details</a>
              <a class="olbtn wepay" href="javascript:;" onclick="confirmOrder({$orders.order.order_id}, this);">确认/Confirm Receipt</a>

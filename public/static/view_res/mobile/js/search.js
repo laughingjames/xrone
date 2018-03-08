@@ -58,10 +58,10 @@ require(['config'], function(config) {
 				if(!orderby){
 					orderby='goods_id';
 				}
-                
+
                 // request uri
-                var _url = '/mobile/search/ajax_goods_list/page/' + parseInt(page)+ '/searchKey/' +encodeURIComponent(searchKey)+ '/orderby/' + orderby;  
-                
+                var _url = '/mobile/search/ajax_goods_list/page/' + parseInt(page)+ '/searchKey/' +encodeURIComponent(searchKey)+ '/orderby/' + orderby;
+
                 listLoading = true;
               //  $('.emptyTip').html('');
                 $('#list-loading').show();
@@ -89,7 +89,7 @@ require(['config'], function(config) {
                             });
                         });
                     }
-                    
+
                     searchKey = null;
                     _url = null;
                 });

@@ -399,5 +399,8 @@ class Cart extends MobileBase{
 		'address'=>$address,
 		'area'=>get_area_name($address['province_id']).' '.get_area_name($address['city_id']).' '.get_area_name($address['country_id'])];		
 	}
+	public function goto_broswer(){
+	    return $this->fetch();
+    }
 	
 }

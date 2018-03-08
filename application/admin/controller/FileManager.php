@@ -20,14 +20,11 @@ class FileManager extends ImageManager{
 	protected function _initialize(){	
 		parent::_initialize();	
 		define('UID',osc_service('admin','user')->is_login());
-
         if(!UID){
             exit();
         }
         $admin_name=session('user_auth.username');
 		$this->init('hello_'.$admin_name);
-		
 	}
-	
 }
 ?>

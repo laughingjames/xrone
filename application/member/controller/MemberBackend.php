@@ -26,26 +26,26 @@ class MemberBackend extends AdminBase{
      public function index(){     	
 
 		$param=input('param.');
-		
+
 		$query=[];
-		
-		if(isset($param['user_name'])){		
+
+		if(isset($param['user_name'])){
 			$map['m.username|m.nickname']=['like',"%".$param['user_name']."%"];
 			$query['m.username']=urlencode($param['user_name']);
 		}else{
 			$map['m.uid']=['gt',0];
 		}
-		
+
 		$list=[];
-		
-		$list=Db::name('member')->alias('m')->field('m.*,mag.title')	
+
+		$list=Db::name('member')->alias('m')->field('m.*,mag.title')
 		->join('member_auth_group mag','m.groupid = mag.id')
-		->where($map)->order('m.uid desc')->paginate(config('page_num'),false,$query);		
-		
+		->where($map)->order('m.uid desc')->paginate(config('page_num'),false,$query);
+
 		$this->assign('list',$list);
-				
+
 		$this->assign('empty','<tr><td colspan="20">没有数据~</td></tr>');
-		
+
     	return $this->fetch();
 	 }
 	 public function add(){

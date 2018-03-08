@@ -26,21 +26,21 @@ class Search extends MobileBase
 	}
 	
 	function ajax_goods_list(){
-		
+
 		$page=input('param.page');//页码
-		
+
 		$search_key=input('param.searchKey');//关键字
-		
+
 		$order_by=input('param.orderby');//排序
 		//开始数字,数据量
-		$limit = (6 * $page) . ",6";		
-		
+		$limit = (6 * $page) . ",6";
+
 		if(empty($order_by)){
 			$order_by=' goods_id';
 		}
-		
+
 		$where['name']=['like','%'.$search_key.'%'];
-		
+
 		$list=Db::name('goods')->where($where)->order($order_by)->limit($limit)->select();
 
 		if(isset($list)&&is_array($list)){
@@ -49,7 +49,7 @@ class Search extends MobileBase
 			}		
 		}
 		$this->assign('goods',$list);
-		
+
 		exit($this->fetch());	
 	}
 
