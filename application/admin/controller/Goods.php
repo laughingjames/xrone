@@ -317,7 +317,6 @@ class Goods extends AdminBase{
 	//更新价格
 	function update_price(){
 		$data=input('post.');
-		
 		$update['goods_id']=(int)$data['goods_id'];
 		$update['price']=(float)$data['price'];
 		

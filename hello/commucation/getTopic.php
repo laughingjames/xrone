@@ -7,7 +7,9 @@
  */
 
 require_once ('../Db.php');
+
 require_once ('../response.php');
+
 $con=Db::getInstance()->connect();
 
 
@@ -15,6 +17,7 @@ $con=Db::getInstance()->connect();
 $page=$_POST['page'];
 
 empty($_POST['page'])?$pageCount=5:$pageCount=3;
+
 $offset=$page*$pageCount;
 $rows=$con->query("
 select t.id as id,authors_id, 
