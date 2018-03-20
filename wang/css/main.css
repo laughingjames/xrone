@@ -598,7 +598,7 @@ body{
 }
 
 .timeUl li{
-    width: 25%;
+    width: 20%;
     float: left;
     height: 100%;
     position: relative;
@@ -624,14 +624,14 @@ body{
 .timeUl li div{
     height: 45%;
     width: 100%;
-    background-color: #444444;
+    /*background-color: #444444;*/
     filter:alpha(opacity=90);  
-    -moz-opacity:0.9;  
-    -khtml-opacity: 0.9;  
+    -moz-opacity:0.1;
+    -khtml-opacity: 0.1;
     opacity: 0.9;  
     text-align: center;
     color: #ffffff;
-    box-shadow: 10px 10px 5px #000000;
+    /*box-shadow: 10px 10px 5px #000000;*/
 }
 
 .timeUl li:nth-child(2n) div{

@@ -8,6 +8,7 @@ use \oscshop\Hashids;
 use think\exception\ClassNotFoundException;
 use \oscshop\Weight;
 
+
 if (!function_exists('osc_goods')) {
     /**
      * 商品相关数据助手函数
@@ -32,8 +33,7 @@ if (!function_exists('osc_model')) {
      * osc模型实例化助手函数
 	 * 
      */
-    function osc_model($module_name,$controller_name)
-    {
+    function osc_model($module_name,$controller_name){
     	$class = '\\app\\'.$module_name.'\\model\\' . ucwords($controller_name);
         
 		if (class_exists($class)) {

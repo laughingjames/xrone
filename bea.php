@@ -115,18 +115,16 @@ function btn1(){
 		$ip = $_SERVER["REMOTE_ADDR"];
 		$flag=0;
 		mysql_connect('localhost','root','JhFnZv9TmHhJ');
-		//mysql_connect('localhost','root','root');
-
 		mysql_select_db('data');
 		mysql_query('set names utf8');
 		
 		
-		$find="SELECT * FROM English where sex='女' and name_school='温州医科大学(学院路校区)'";
+		$find="SELECT * FROM English where sex='女' and name_school='温州医科大学(茶山校区)'";
 		//$sql ="insert into Look_English values(null,'$username','$number','$ip','$time')";
 		//mysql_query($sql);
 		$result = mysql_query($find);
-		
-	
+
+
 
 		return $result;
 }
@@ -134,7 +132,6 @@ function btn1(){
 	function OutPut()
 {
 		$result=ConnectAndSelct();
-		echo $find;
 		$flag=0;
 		while($row=mysql_fetch_array($result))
   		{
@@ -144,8 +141,8 @@ function btn1(){
         <html>
  <head></head>
  <body>
-<?php echo '<index-img   style="float:left" src="'.''.$row['Photo'].'"width="100px" height="120px"/>'?>
-</a>
+<?php echo '<img   style="float:left" src="'.''.$row['Photo'].'"width="50px" height="60px"/>'?>
+
 
  </body>
 
@@ -175,21 +172,21 @@ function btn1(){
  <head></head>
  <body>
  
-  <div class="demo" style="padding: 20px 0;"> 
-   <div class="container"> 
-    <div class="row"> 
-     <div class="col-md-offset-3 col-md-6"> 
-      <form id="form1" class="form-horizontal" name="form1" method="post" action="" onsubmit="return check()"> 
-       <span class="heading">数据查询</span> 
+  <div class="demo" style="padding: 20px 0;">
+   <div class="container">
+    <div class="row">
+     <div class="col-md-offset-3 col-md-6">
+      <form id="form1" class="form-horizontal" name="form1" method="post" action="" onsubmit="return check()">
+       <span class="heading">数据查询</span>
        <div class="form-group">
         <input type="text" class="form-control" name="username" id="username" placeholder="姓名" />
-        <i class="fa fa-user"></i> 
-       </div> 
+        <i class="fa fa-user"></i>
+       </div>
        <div class="form-group">
         <input type="text" class="form-control" name="password" id="password" placeholder="学号" />
-        <i class="fa fa-user"></i> 
-       </div> 
-       <input type="submit" class="btn" id="btn" name="namebtn" value="查找" /> 
+        <i class="fa fa-user"></i>
+       </div>
+       <input type="submit" class="btn" id="btn" name="namebtn" value="查找" />
       </form>
      </div>
     </div>

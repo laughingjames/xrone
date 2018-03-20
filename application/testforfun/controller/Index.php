@@ -29,6 +29,7 @@ class index extends Controller
         curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);  //将curl_exec()获取的信息以文件流的形式返回，而不是直接输出。
         $result = curl_exec($ch);
+
         $level_number_ru="/<td><span class=\"textspan\">(.*)<\/span>/";
         preg_match_all($level_number_ru,$result,$out);
         $data['level']=$out[0][0];
@@ -42,7 +43,7 @@ class index extends Controller
         $data['class']=$out[0][3];
 
 
-         return json_encode($data);
+        return json_encode($data);
 
     }
     public function chsi(){

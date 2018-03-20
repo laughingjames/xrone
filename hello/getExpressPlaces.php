@@ -18,7 +18,6 @@ if(mysqli_connect_errno()){
                     "keyword"=>$row['keyword'],
                     "content"=>$row['content']);
         }
-
     }
     echo json_encode($callBackData);
 }

@@ -158,32 +158,27 @@
 function check(){
 		
 		var username=document.getElementById('username');
-		if(username.value=='')
-		{
-		alert('姓名不能为空!');
-		username.focus(); 
-		return false;
+		if(username.value=='') {
+            alert('姓名不能为空!');
+            username.focus();
+            return false;
 		}
-		
+
 		var phonenum=document.getElementById('phonenum');
-		if(phonenum.value==''||phonenum.value.length!=11)
-		{
+		if(phonenum.value==''||phonenum.value.length!=11) {
 			alert('你确定这是你的手机号码？');
 			phonenum.select(); 
 			return false;
 		}
 		
 		var sno=document.getElementById('sno');
-		if(sno.value==''||sno.value.length!=11)
-		{
-			
+		if(sno.value==''||sno.value.length!=11) {
 			alert('你确定是你的学号？');
 			sno.select(); 
 			return false;
 		}
 		var bikenum=document.getElementById('bikenum');
-		if(bikenum.value=='')
-		{
+		if(bikenum.value=='') {
 			alert(' 车牌号 不能为空！');
 			bikenum.focus(); 
 			return false;
@@ -204,29 +199,30 @@ function Submit(){
   <?php
 	if(isset($_POST['btn']))
 	{
-		echo '来自系统的消息：<br>';
-		echo '哈哈，按钮提交成功<br>';
+
+
 		$username=$_POST['username'];
 		$phponenum=$_POST['phonenum'];
 		$sno=$_POST['sno'];
 		$bikenum=$_POST['bikenum'];
 		$notes=$_POST['notes'];
 		$time=date('Y-m-d H:i:s',time());
+
 		
 		mysql_connect('localhost','root','JhFnZv9TmHhJ');
 		if(mysql_connect('localhost','root','JhFnZv9TmHhJ') )
-		echo '链接成功<br>';
+		    echo '链接成功<br>';
 		else
-		echo '链接失败<br>';
+		    echo '链接失败<br>';
 		
 		mysql_select_db('data');
 		mysql_query('set names utf8');
 		$sql ="insert into ahebike values(null,'$username','$sno','$bikenum','$phponenum','$notes','$time')";
 	
 		if(mysql_query($sql))
-		echo '写入成功！';
+		    echo '写入成功！';
 		else
-		echo '写入error! 请检查数据类型';
+		    echo '写入error! 请检查数据类型';
 		
 	}
 ?>	

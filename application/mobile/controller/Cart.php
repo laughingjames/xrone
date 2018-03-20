@@ -100,7 +100,7 @@ class Cart extends MobileBase{
 
 		$this->assign('SEO',['title'=>'购物车/Shopping Cart-'.config('SITE_TITLE')]);
 		$this->assign('top_title','购物车/Shopping Cart');
-		 return $this->fetch();
+		return $this->fetch();
 	}
 	
 	function add(){
@@ -400,8 +400,10 @@ class Cart extends MobileBase{
 		'area'=>get_area_name($address['province_id']).' '.get_area_name($address['city_id']).' '.get_area_name($address['country_id'])];		
 	}
 	public function goto_broswer(){
-
-	    return $this->fetch();
+        if(in_wechat()){
+            return $this->fetch();
+        }
+        $this->redirect('cart/index');
     }
 	
 }
