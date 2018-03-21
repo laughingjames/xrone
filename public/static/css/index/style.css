@@ -64,10 +64,10 @@ body{
 	width: 55%;
 }
 .menu ul li .menu-txt{
-	font-size: 0.43rem;
-	font-weight: 600;
-	padding-top:0.36rem;
-	color: #333;
+	font-size: 0.2rem;
+	font-weight: 400;
+	padding-top:0.2rem;
+	color: black;
 }
 
 /******news*****/
@@ -98,13 +98,14 @@ body{
 }
 .bc-left>img,.nc-left>img{width: 100%;}
 .brirf-content .bc-right, .nc-right .ncr-top{
-	font-size: 0.42rem;
-	line-height: 0.68rem;
-	word-break: break-all;
-    text-overflow: ellipsis;
-    display: -webkit-box; /** 对象作为伸缩盒子模型显示 **/
-    -webkit-box-orient: vertical; /** 设置或检索伸缩盒对象的子元素的排列方式 **/
-    overflow: hidden;  /** 隐藏超出的内容 **/
+	color: black;
+    /*font-size: 0.42rem;*/
+    /*line-height: 0.68rem;*/
+    /*word-break: break-all;*/
+    /*text-overflow: ellipsis;*/
+    /*display: -webkit-box; !** 对象作为伸缩盒子模型显示 **!*/
+    /*-webkit-box-orient: vertical; !** 设置或检索伸缩盒对象的子元素的排列方式 **!*/
+    /*overflow: hidden;  !** 隐藏超出的内容 **!*/
 }
 .brirf-content .bc-right{
 		width: 60%;
