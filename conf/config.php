@@ -32,7 +32,9 @@ return [
         '__ADMIN__' =>'/public/static/view_res/admin',
         '__RES__'=>'/public/static/view_res',
         '__ADMIN__' =>'/public/static/view_res/admin',
-        'IMG_ROOT'=>'/'
+        'IMG_ROOT'=>'/',
+        '__UPLOAD__'=>'/public/uploads',
+
     ],
     'session'                => [
         'type'           => '',
