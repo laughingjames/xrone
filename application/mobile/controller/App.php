@@ -113,22 +113,7 @@ class App extends MobileBase
         return $this->fetch();
     }
 
-    /**
-     * 展示房源信息
-     * @return mixed
-     */
-    public function take_out_shop(){
-        $list=[];
-        $list= Db::name('take_out_shop')
-            ->paginate(config('page_num'));
 
-        $this->assign('top_title','外卖/Take_out');
-        $this->assign('SEO',['title'=>'外卖/Take_out-'.config('SITE_TITLE')]);
-        $this->assign('flag','search');
-        $this->assign('shop_list',$list);
-
-        return $this->fetch();
-    }
 
     //兼职详情
     function take_out_detail(){

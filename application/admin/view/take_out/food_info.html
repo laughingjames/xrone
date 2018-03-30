@@ -11,58 +11,53 @@
 </div>	
 	<ul class="nav nav-tabs">
 		
-	  <li class="active"><a href="#tab-member" data-toggle="tab">店铺信息</a></li>
+	  <li class="active"><a href="#tab-member" data-toggle="tab">外卖信息</a></li>
 
 	  
 	</ul>
 
-	<form class="form-horizontal" id="validation-form"  method="post" action='{:url("TakeOut/edit_shop_detail")}'>
+	<form class="form-horizontal" id="validation-form"  method="post" action='{:url("TakeOut/edit_food_detail")}'>
 	<div class="tab-content">
-		<input name="shop_id" type="hidden" value="{$data.info.shop_id}" />
+		<input name="food_id" type="hidden" value="{$data.info.food_id}" />
 
 		<div class="tab-pane active" id="tab-member">
 			<table class="table table-binfoed">
 				<tr>
 				    <td>ID</td>
-				    <td>{$data.info.shop_id}</td>
+				    <td>{$data.info.food_id}</td>
 				</tr>
 				<tr>
 					<td>
-						店铺Logo
+						外卖大图
 					</td>
 					<td>
 						<div class="form-group required">
 							<div class="col-sm-10" id="thumb">
 								<a id="thumb-image" href="#" data-toggle="image" class="img-thumbnail">
-									{if condition="!empty($data.info['shop_pic'])"}
-									<img src="IMG_ROOT{$data.info.shop_pic|resize=300,100}" />
+									{if condition="!empty($data.info['food_pic'])"}
+									<img src="IMG_ROOT{$data.info.food_pic|resize=300,100}" />
 									{else /}
 									<img src="__PUBLIC__/image/no_image_100x100.jpg" />
 									{/if}
 								</a>
-								<input type="hidden" name="shop_pic" value="{$data.info.shop_pic}" id="input-image" />
+								<input type="hidden" name="food_pic" value="{$data.info.food_pic}" id="input-image" />
 							</div>
 						</div>
 					</td>
 				</tr>
 				<tr>
-					<td>店铺名</td>
+					<td>外卖名</td>
 					<td>
-						<input name="shop_title" type="text" style="width:400px;" value="{$data.info.shop_title|default=''}" />
+						<input name="food_title" type="text" style="width:400px;" value="{$data.info.food_title|default=''}" />
 					</td>
 				</tr>
 				<tr>
-					<td>店铺简介</td>
+					<td>外卖价格</td>
 					<td>
-						<input name="shop_detail" type="text" style="width:400px;" value="{$data.info.shop_detail|default=''}" />
+						<input name="food_price" type="text" style="width:400px;" value="{$data.info.food_price|default=''}" />
 					</td>
 				</tr>
-				<tr>
-				    <td>店铺地址</td>
-				    <td>
-						<input name="shop_address" type="text" style="width:400px;" value="{$data.info.shop_detail|default=''}" />
-					</td>
-				</tr>
+
 
 				<tr>
 					<td>状态</td>

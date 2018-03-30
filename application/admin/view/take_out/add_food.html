@@ -1,0 +1,75 @@
+{extend name="./application/admin/view/public/base.html" /}
+{block name="content"}
+<div class="page-header">
+		<h1>
+			{$breadcrumb2}
+			<small>
+				<i class="ace-icon fa fa-angle-double-right"></i>
+				{$crumbs}
+			</small>
+		</h1>
+</div>	
+	<ul class="nav nav-tabs">
+		
+	  <li class="active"><a href="#tab-member" data-toggle="tab">外卖信息</a></li>
+
+	  
+	</ul>
+
+	<form class="form-horizontal" id="validation-form"  method="post" action='{:url("TakeOut/add_food")}'>
+	<div class="tab-content">
+		<input name="shop_id" type="hidden" value="{$shop_id}" />
+		<div class="tab-pane active" id="tab-member">
+			<table class="table table-binfoed">
+
+				<tr>
+					<td>
+						外卖大图
+					</td>
+					<td>
+						<div class="form-group required">
+							<div class="col-sm-10" id="thumb">
+								<a id="thumb-image" href="#" data-toggle="image" class="img-thumbnail">
+									<img src="__PUBLIC__/image/no_image_100x100.jpg" />
+
+								</a>
+								<input type="hidden" name="food_pic" value="" id="input-image" />
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>外卖名</td>
+					<td>
+						<input name="food_title" type="text" style="width:400px;" value="" />
+					</td>
+				</tr>
+				<tr>
+					<td>外卖价格</td>
+					<td>
+						<input name="food_price" type="text" style="width:400px;" value="" />
+					</td>
+				</tr>
+
+				</table>
+				<div class="form-group">
+				
+				<div style="margin-left:20px;">
+					<input name="send" type="submit" value="提交" class="btn btn-primary" />
+				</div>
+			</div>
+		</div>
+	</div>
+	</form>	
+	
+{/block}
+{block name="javascript"}
+
+<script>
+$(function(){	
+	
+
+
+});
+</script>							
+{/block}

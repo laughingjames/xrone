@@ -53,6 +53,7 @@ class TakeOut extends AdminBase{
 
         if(request()->isPost()){
             $data=input('post.');
+
             $shop['shop_detail']=$data['shop_detail'];
             $shop['shop_title']=$data['shop_title'];
             $shop['shop_pic']=$data['shop_pic'];
@@ -81,40 +82,40 @@ class TakeOut extends AdminBase{
       * 外卖物品界面
       */
 	 public function take_out_foods(){
-
-//	     $param=input('param.');
+	     $param=input('param.');
+	     $shop_id=input('param.shop_id');
 //         $query=[];
-//         if(isset($param['job_name'])){
-//             $map['p.job_name']=['like',"%".$param['job_name']."%"];
-//             $query['p.job_name']=urlencode($param['job_name']);
-//         }else{
-//             $map['p.id']=['gt',0];
-//         }
+         if(isset($param['job_name'])){
+             $map['p.job_name']=['like',"%".$param['job_name']."%"];
+             $query['p.job_name']=urlencode($param['job_name']);
+         }else{
+             $map['t.shop_id']=$shop_id;
+         }
 
          $list=[];
          $list= Db::name('take_out_foods')
              ->alias('t')
-//             ->where($map)
+           ->where($map)
              ->paginate(config('page_num'));
 
-
+         $this->assign('shop_id',$shop_id);
          $this->assign('list',$list);
          $this->assign('empty','<tr><td colspan="20">没有数据~</td></tr>');
          return $this->fetch();
      }
 
     /**
-     * 编辑shop信息
+     * 编辑外卖信息
      * @return mixed
      */
     public function edit_food_detail(){
 
         if(request()->isPost()){
             $data=input('post.');
-            $food['food_detail']=$data['food_detail'];
+
             $food['food_title']=$data['food_title'];
             $food['food_pic']=$data['food_pic'];
-            if(Db::name('take_out_food')->where('food_id',$data['food_id'])->update($food)){
+            if(Db::name('take_out_foods')->where('food_id',$data['food_id'])->update($food)){
                 storage_user_action(UID,session('user_auth.username'),config('BACKEND_USER'),'编辑了外卖店铺信息');
                 $this->success('编辑成功',url('TakeOut/index'));
             }else{
@@ -123,13 +124,14 @@ class TakeOut extends AdminBase{
         }
 
         $list=[
-            'info'=>Db::name('take_out_shop')->where('shop_id',input('param.shop_id'))->find(),
+            'info'=>Db::name('take_out_foods')
+                ->where('food_id',input('param.food_id'))
+                ->find(),
         ];
 
-
         $this->assign('data',$list);
-        $this->assign('crumbs','外卖店铺信息修改');
-        return $this->fetch('shop_info');
+        $this->assign('crumbs','外卖店铺外卖修改');
+        return $this->fetch('food_info');
     }
 
 
@@ -137,32 +139,29 @@ class TakeOut extends AdminBase{
      * 添加兼职信息
      * @return array|mixed
      */
-    public function add(){
+    public function add_food(){
         if(request()->isPost()){
             $data=input('post.');
-            $parttimejob['job_name']=$data['job_name'];
-            $parttimejob['salary']=$data['salary'];
-            $parttimejob['need_counts']=$data['need_counts'];
-            $parttimejob['address']=$data['address'];
-            $parttimejob['date']=$data['date'];
-            $parttimejob['detail']=$data['detail'];
-            $parttimejob['notes']=$data['notes'];
+            $food['shop_id']=$data['shop_id'];
+            $food['food_pic']=$data['food_pic'];
+            $food['food_title']=$data['food_title'];
+            $food['food_price']=$data['food_price'];
 
-            $uid=Db::name('parttime_job')->insert($parttimejob,false,true);
+            $uid=Db::name('take_out_foods')->insert($food,false,true);
 
             if($uid){
-                storage_user_action(UID,session('user_auth.username'),config('BACKEND_USER'),'添加了新的兼职：'.$data['job_name']);
-                return ['success'=>'新增成功',url('ParttimejobBackend/jobmanage')];
+                storage_user_action(UID,session('user_auth.username'),config('BACKEND_USER'),'添加了新的兼职：'.$data['food_title']);
+                $this->success('新增成功',url('TakeOut/take_out_foods',['shop_id'=>$data['shop_id']]));
             }else{
-                return ['error'=>'新增失败'];
-
+                $this->error('编辑失败');
             }
 
         }
 
         $this->assign('group',Db::name('member_auth_group')->field('id,title')->select());
+        $this->assign('shop_id',input('param.shop_id'));
         $this->assign('crumbs','新增兼职');
-        return $this->fetch();
+        return $this->fetch('add_food');
     }
 
 
